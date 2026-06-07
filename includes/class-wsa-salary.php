@@ -108,8 +108,8 @@ class WSA_Salary {
 
     /**
      * Payroll hours follow the final salary rule used by both WP Admin and frontend salary dashboards.
-     * Exact 09:00 AM to 09:00 PM = 8 paid working hours + 4 OT hours with NO break deduction.
-     * Every other timing uses the normal break rule: tracked break if available, otherwise shift break minutes.
+     * Regular same-day checkout at/after 09:00 PM has no break deduction.
+     * Normal paid time is capped at the 8-hour shift threshold; remaining time is OT.
      */
     private static function payroll_hours_for_attendance($att, $staff) {
         $login  = !empty($att->login_time)  ? strtotime($att->login_time)  : 0;
@@ -126,9 +126,8 @@ class WSA_Salary {
 
         $raw_mins  = max(0, (int) round(($logout - $login) / 60));
         $raw_hours = $raw_mins / 60;
-        $same_day  = (date('Y-m-d', $login) === date('Y-m-d', $logout));
         $is_sunday = ((int) date('w', $login) === 0);
-        $is_exact_9_to_9 = ($same_day && date('H:i', $login) === '09:00' && date('H:i', $logout) === '21:00');
+        $skip_break_after_9pm = WSA_Attendance::skips_scheduled_break_after_9pm($att->login_time, $att->logout_time);
 
         $std_mins = 480;
         if (!empty($staff->overtime_after_mins)) {
@@ -137,9 +136,9 @@ class WSA_Salary {
             $std_mins = max(1, (int) round(((float)$staff->standard_hours) * 60));
         }
 
-        // Only exact 09:00 AM → 09:00 PM on a regular day skips break deduction.
-        if (!$is_sunday && $is_exact_9_to_9) {
-            $normal_hours = $std_mins / 60;
+        // Regular checkout at/after 21:00 skips the scheduled 30m break.
+        if ($skip_break_after_9pm) {
+            $normal_hours = min($raw_mins, $std_mins) / 60;
             $ot_hours = max(0, $raw_mins - $std_mins) / 60;
             return [$raw_hours, round($normal_hours, 4), round($ot_hours, 4), 0.0];
         }

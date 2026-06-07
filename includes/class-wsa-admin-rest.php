@@ -475,7 +475,7 @@ class WSA_Admin_Rest {
             $display_ot    = (float)($rec->overtime_hours ?? 0);
 
             // Recalculate display hours from current rules so old saved rows also show correctly.
-            // Exact 09:00–21:00 shows 8h working + 4h OT; other timings keep normal break deduction.
+            // Regular checkout at/after 21:00 shows zero scheduled break.
             if (!empty($rec->login_time) && !empty($rec->logout_time)) {
                 $sid = (int) $rec->staff_id;
                 if (!array_key_exists($sid, $staff_cache)) {
@@ -485,11 +485,7 @@ class WSA_Admin_Rest {
                 if ($staff_obj) {
                     $break_for_calc = $bm > 0 ? $bm : WSA_Attendance::scheduled_break_mins($rec->login_time, $rec->logout_time);
                     [$display_total, $display_ot] = WSA_Attendance::calculate($rec->login_time, $rec->logout_time, $staff_obj, $break_for_calc);
-                    $login_ts = strtotime($rec->login_time);
-                    $logout_ts = strtotime($rec->logout_time);
-                    $is_sunday = ((int)date('w', $login_ts) === 0);
-                    $is_exact_9_to_9 = (date('Y-m-d',$login_ts) === date('Y-m-d',$logout_ts) && date('H:i',$login_ts) === '09:00' && date('H:i',$logout_ts) === '21:00' && !$is_sunday);
-                    $bm = $is_exact_9_to_9 ? 0.0 : $break_for_calc;
+                    $bm = WSA_Attendance::skips_scheduled_break_after_9pm($rec->login_time, $rec->logout_time) ? 0.0 : $break_for_calc;
                 }
             }
 
@@ -580,7 +576,11 @@ class WSA_Admin_Rest {
             $staff = WSA_DB::get_staff((int) $rec->staff_id);
             if ($staff) {
                 $break_mins_for_calc = (float)($rec->break_duration_mins ?? 0);
-                if ($break_mins_for_calc <= 0) $break_mins_for_calc = WSA_Attendance::scheduled_break_mins($login_dt, $logout_dt);
+                if (WSA_Attendance::skips_scheduled_break_after_9pm($login_dt, $logout_dt)) {
+                    $break_mins_for_calc = 0;
+                } elseif ($break_mins_for_calc <= 0) {
+                    $break_mins_for_calc = WSA_Attendance::scheduled_break_mins($login_dt, $logout_dt);
+                }
                 [$total_h, $ot_h, $is_early] = WSA_Attendance::calculate($login_dt, $logout_dt, $staff, $break_mins_for_calc);
                 $update['break_duration_mins'] = round($break_mins_for_calc, 2);
                 $update['total_hours']    = round($total_h, 4);

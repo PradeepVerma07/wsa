@@ -2350,7 +2350,7 @@
             </div>
           </div>
 
-          <div class="wsa-slip-note">Rule applied: exact 9:00 AM–9:00 PM = 8h working + 4h OT without break deduction. Other timings use normal 30m break deduction. Sunday is OT only.</div>
+          <div class="wsa-slip-note">Rule applied: regular checkout at or after 9:00 PM has no 30m break deduction. 9:00 AM–9:00 PM = 8h working + 4h OT. Sunday is OT only.</div>
         </section>
       `;
     }

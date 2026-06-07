@@ -87,11 +87,7 @@ $deld   = isset($_GET['deleted']) ? '<div class="wsa-alert wsa-alert--ok">Record
                     $calc = WSA_Attendance::calculate($r->login_time, $r->logout_time, $staff_obj, $break_for_calc);
                     $display_hours = (float)$calc[0];
                     $display_ot    = (float)$calc[1];
-                    $login_ts = strtotime($r->login_time);
-                    $logout_ts = strtotime($r->logout_time);
-                    $is_sunday = ((int)date('w', $login_ts) === 0);
-                    $is_exact_9_to_9 = (date('Y-m-d',$login_ts) === date('Y-m-d',$logout_ts) && date('H:i',$login_ts) === '09:00' && date('H:i',$logout_ts) === '21:00' && !$is_sunday);
-                    $display_break = $is_exact_9_to_9 ? 0.0 : $break_for_calc;
+                    $display_break = WSA_Attendance::skips_scheduled_break_after_9pm($r->login_time, $r->logout_time) ? 0.0 : $break_for_calc;
                 }
             }
           ?>

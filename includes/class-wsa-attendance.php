@@ -227,11 +227,23 @@ class WSA_Attendance {
      * Scheduled break overlap from Settings.
      * Example: break window 13:00–13:30 deducts only when the IN→OUT time crosses that window.
      * 09:00–12:00 = 0 min, 09:00–19:00 = 30 min, 13:15–18:00 = 15 min.
+     * Regular same-day checkout at/after 21:00 = 0 min scheduled break.
      */
+    public static function skips_scheduled_break_after_9pm($login, $logout) {
+        $in_ts  = strtotime($login);
+        $out_ts = strtotime($logout);
+        if (!$in_ts || !$out_ts || $out_ts <= $in_ts) return false;
+
+        return date('Y-m-d', $in_ts) === date('Y-m-d', $out_ts)
+            && (int) date('w', $in_ts) !== 0
+            && date('H:i', $out_ts) >= '21:00';
+    }
+
     public static function scheduled_break_mins($login, $logout) {
         $in_ts  = strtotime($login);
         $out_ts = strtotime($logout);
         if (!$in_ts || !$out_ts || $out_ts <= $in_ts) return 0;
+        if (self::skips_scheduled_break_after_9pm($login, $logout)) return 0;
 
         $start = get_option('wsa_break_start_time', '13:00');
         $end   = get_option('wsa_break_end_time', '13:30');
@@ -269,9 +281,8 @@ class WSA_Attendance {
 
         $raw_mins = max(0, (int) round(($out_ts - $in_ts) / 60));
         $att_date = date('Y-m-d', $in_ts);
-        $same_day = ($att_date === date('Y-m-d', $out_ts));
         $is_sunday = ((int) date('w', $in_ts) === 0);
-        $is_exact_9_to_9 = ($same_day && date('H:i', $in_ts) === '09:00' && date('H:i', $out_ts) === '21:00');
+        $skip_break_after_9pm = self::skips_scheduled_break_after_9pm($login, $logout);
 
         $std_mins = 480; // default 8 hours
         if (!empty($staff->overtime_after_mins)) {
@@ -280,16 +291,20 @@ class WSA_Attendance {
             $std_mins = max(1, (int) round(((float) $staff->standard_hours) * 60));
         }
 
-        // Special approved rule: regular working day exactly 09:00 AM → 09:00 PM
-        // counts as 8h working + 4h OT and does NOT deduct 30m break.
-        if (!$is_sunday && $is_exact_9_to_9) {
-            $is_early_exact = 0;
+        // Regular checkout at/after 21:00 skips the scheduled 30m break.
+        // Example: 09:00 -> 21:00 = 8h working + 4h OT.
+        if ($skip_break_after_9pm) {
+            $is_early_after_9 = 0;
             if (!empty($staff->end_time)) {
                 $shift_end = strtotime($att_date . ' ' . $staff->end_time);
                 $grace_early = $shift_end - ((int)($staff->early_exit_grace_mins ?: 15) * 60);
-                if ($out_ts < $grace_early) $is_early_exact = 1;
+                if ($out_ts < $grace_early) $is_early_after_9 = 1;
             }
-            return [round($std_mins / 60, 4), round(max(0, $raw_mins - $std_mins) / 60, 4), $is_early_exact];
+            return [
+                round(min($raw_mins, $std_mins) / 60, 4),
+                round(max(0, $raw_mins - $std_mins) / 60, 4),
+                $is_early_after_9,
+            ];
         }
 
         // Normal rule for every other time:

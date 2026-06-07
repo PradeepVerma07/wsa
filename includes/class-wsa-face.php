@@ -390,12 +390,7 @@ class WSA_Face {
         if ($ob) { $extra=max(0,($ts-strtotime($ob->break_start))/60); $wpdb->update($brk,['break_end'=>$now,'duration_mins'=>round($extra,2)],['id'=>$ob->id]); }
         $brk_mins = (float)($today->break_duration_mins??0)+$extra;
 
-        $total_secs = max(0,strtotime($now)-strtotime($today->login_time));
-        $net_hours  = max(0,($total_secs-($brk_mins*60))/3600);
-        $ot_after   = max(1,(int)($staff->overtime_after_mins??480))/60;
-        $ot_hours   = max(0,$net_hours-$ot_after);
-        $end_ts     = $staff->end_time ? strtotime(date('Y-m-d').' '.$staff->end_time) : 0;
-        $early      = ($end_ts && $ts < ($end_ts - (int)($staff->early_exit_grace_mins??0)*60)) ? 1 : 0;
+        [$net_hours, $ot_hours, $early] = WSA_Attendance::calculate($today->login_time, $now, $staff, $brk_mins);
 
         $wpdb->update($att,['logout_time'=>$now,'total_hours'=>round($net_hours,2),'overtime_hours'=>round($ot_hours,2),'break_duration_mins'=>round($brk_mins,2),'status'=>'OUT','is_early_exit'=>$early,'notes'=>trim(($today->notes??'')." | Face check-out — {$location}")],['id'=>$today->id]);
 
