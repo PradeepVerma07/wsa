@@ -1,0 +1,309 @@
+
+/* WSA Clean Frontend Dashboard Layout Repair
+   Scope: only after JS adds body.wsa-clean-dashboard-active
+   Does not affect wp-admin.
+*/
+
+body.wsa-clean-dashboard-active {
+  --wsa-bg:#05070f;
+  --wsa-sidebar:#101421;
+  --wsa-panel:#111827;
+  --wsa-card:#141a2b;
+  --wsa-card2:#101624;
+  --wsa-border:rgba(255,255,255,.10);
+  --wsa-text:#f8fafc;
+  --wsa-muted:#98a2b3;
+  --wsa-primary:#7c5cff;
+  --wsa-primary2:#2f7cf6;
+  background:var(--wsa-bg)!important;
+  margin:0!important;
+  padding:0!important;
+  overflow-x:hidden!important;
+}
+
+/* Remove public theme header/footer ONLY on frontend dashboard */
+body.wsa-clean-dashboard-active header,
+body.wsa-clean-dashboard-active footer,
+body.wsa-clean-dashboard-active .site-header,
+body.wsa-clean-dashboard-active .site-footer,
+body.wsa-clean-dashboard-active .main-navigation,
+body.wsa-clean-dashboard-active .wp-block-navigation,
+body.wsa-clean-dashboard-active .wp-block-search,
+body.wsa-clean-dashboard-active .search,
+body.wsa-clean-dashboard-active .search-form,
+body.wsa-clean-dashboard-active .navbar {
+  display:none!important;
+}
+
+/* Kill boxed theme spacing */
+body.wsa-clean-dashboard-active #page,
+body.wsa-clean-dashboard-active #content,
+body.wsa-clean-dashboard-active .site,
+body.wsa-clean-dashboard-active .site-content,
+body.wsa-clean-dashboard-active .site-main,
+body.wsa-clean-dashboard-active .content-area,
+body.wsa-clean-dashboard-active .entry-content,
+body.wsa-clean-dashboard-active .wp-site-blocks,
+body.wsa-clean-dashboard-active .wp-block-post-content,
+body.wsa-clean-dashboard-active .is-layout-constrained {
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  background:var(--wsa-bg)!important;
+  box-sizing:border-box!important;
+}
+
+body.wsa-clean-dashboard-active .entry-title,
+body.wsa-clean-dashboard-active .page-title {
+  display:none!important;
+}
+
+/* Use real dashboard parent, not forced overlay */
+body.wsa-clean-dashboard-active .wsa-clean-shell {
+  width:100%!important;
+  max-width:none!important;
+  min-height:calc(100vh - 32px)!important;
+  display:grid!important;
+  grid-template-columns:280px minmax(0,1fr)!important;
+  gap:0!important;
+  margin:0!important;
+  padding:0!important;
+  background:var(--wsa-bg)!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+
+/* Sidebar */
+body.wsa-clean-dashboard-active .wsa-clean-sidebar {
+  width:280px!important;
+  min-width:280px!important;
+  max-width:280px!important;
+  height:calc(100vh - 32px)!important;
+  min-height:calc(100vh - 32px)!important;
+  max-height:calc(100vh - 32px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  position:sticky!important;
+  top:32px!important;
+  background:linear-gradient(180deg,#111421,#090d17)!important;
+  border-right:1px solid var(--wsa-border)!important;
+  padding:18px 10px 28px!important;
+  box-sizing:border-box!important;
+  z-index:20!important;
+}
+
+/* Content fills remaining width. This fixes right blank space. */
+body.wsa-clean-dashboard-active .wsa-clean-content {
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  min-height:calc(100vh - 32px)!important;
+  height:calc(100vh - 32px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  margin:0!important;
+  padding:28px 34px!important;
+  box-sizing:border-box!important;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(124,92,255,.10),transparent 30%),
+    radial-gradient(circle at 90% 0%,rgba(47,124,246,.08),transparent 28%),
+    var(--wsa-bg)!important;
+}
+
+body.wsa-clean-dashboard-active .wsa-clean-content > * {
+  width:100%!important;
+  max-width:1180px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* Sidebar links */
+body.wsa-clean-dashboard-active .wsa-clean-sidebar a,
+body.wsa-clean-dashboard-active .wsa-clean-sidebar button,
+body.wsa-clean-dashboard-active .wsa-fsfd-sidebar-link {
+  display:flex!important;
+  align-items:center!important;
+  gap:12px!important;
+  width:calc(100% - 12px)!important;
+  min-height:48px!important;
+  padding:12px 14px!important;
+  margin:4px 6px!important;
+  border-radius:12px!important;
+  color:#9aa6bb!important;
+  background:transparent!important;
+  border:1px solid transparent!important;
+  text-decoration:none!important;
+  font-weight:700!important;
+  font-size:15px!important;
+  box-sizing:border-box!important;
+}
+
+body.wsa-clean-dashboard-active .wsa-clean-sidebar a:hover,
+body.wsa-clean-dashboard-active .wsa-clean-sidebar .active,
+body.wsa-clean-dashboard-active .wsa-fsfd-sidebar-link:hover,
+body.wsa-clean-dashboard-active .wsa-fsfd-sidebar-link.active {
+  color:#fff!important;
+  background:linear-gradient(135deg,rgba(124,92,255,.22),rgba(47,124,246,.14))!important;
+  border-color:rgba(124,92,255,.28)!important;
+}
+
+/* Header/card polish */
+body.wsa-clean-dashboard-active .wsa-page-header,
+body.wsa-clean-dashboard-active .dashboard-header,
+body.wsa-clean-dashboard-active .admin-topbar,
+body.wsa-clean-dashboard-active .portal-topbar,
+body.wsa-clean-dashboard-active .wsa-topbar,
+body.wsa-clean-dashboard-active .wsa-fsfd-header {
+  width:100%!important;
+  max-width:1180px!important;
+  min-height:76px!important;
+  margin:0 auto 24px!important;
+  padding:20px 24px!important;
+  border-radius:18px!important;
+  background:linear-gradient(135deg,#141a2b,#101624)!important;
+  border:1px solid var(--wsa-border)!important;
+  box-shadow:0 20px 60px rgba(0,0,0,.26)!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  box-sizing:border-box!important;
+}
+
+body.wsa-clean-dashboard-active h1,
+body.wsa-clean-dashboard-active h2,
+body.wsa-clean-dashboard-active h3,
+body.wsa-clean-dashboard-active h4 {
+  color:var(--wsa-text)!important;
+  opacity:1!important;
+}
+
+body.wsa-clean-dashboard-active p,
+body.wsa-clean-dashboard-active small {
+  color:var(--wsa-muted)!important;
+}
+
+body.wsa-clean-dashboard-active .wsa-card,
+body.wsa-clean-dashboard-active .dashboard-card,
+body.wsa-clean-dashboard-active .admin-card,
+body.wsa-clean-dashboard-active .portal-card,
+body.wsa-clean-dashboard-active .quick-mark-card,
+body.wsa-clean-dashboard-active .wsa-panel,
+body.wsa-clean-dashboard-active .wsa-fsfd-card {
+  background:linear-gradient(180deg,var(--wsa-card),var(--wsa-card2))!important;
+  border:1px solid var(--wsa-border)!important;
+  border-radius:18px!important;
+  box-shadow:0 20px 60px rgba(0,0,0,.26)!important;
+  color:var(--wsa-text)!important;
+  padding:22px!important;
+  box-sizing:border-box!important;
+}
+
+/* Face module */
+body.wsa-clean-dashboard-active .wsa-fsfd-page {
+  width:100%!important;
+  max-width:1180px!important;
+  margin:0 auto!important;
+  padding:0!important;
+  background:transparent!important;
+}
+
+body.wsa-clean-dashboard-active .wsa-fsfd-grid {
+  display:grid!important;
+  grid-template-columns:minmax(0,1.12fr) minmax(360px,.88fr)!important;
+  gap:22px!important;
+  align-items:start!important;
+}
+
+body.wsa-clean-dashboard-active .wsa-fsfd-camera {
+  width:100%!important;
+  aspect-ratio:16/10!important;
+  min-height:320px!important;
+  max-height:430px!important;
+  border-radius:18px!important;
+  background:#050816!important;
+  border:1px solid rgba(124,92,255,.30)!important;
+  overflow:hidden!important;
+}
+
+/* Tables */
+body.wsa-clean-dashboard-active table {
+  width:100%!important;
+  max-width:1180px!important;
+  margin:0 auto!important;
+  border-collapse:separate!important;
+  border-spacing:0!important;
+  background:var(--wsa-card)!important;
+  border:1px solid var(--wsa-border)!important;
+  border-radius:18px!important;
+  overflow:hidden!important;
+  color:var(--wsa-text)!important;
+}
+
+body.wsa-clean-dashboard-active th,
+body.wsa-clean-dashboard-active td {
+  padding:18px 20px!important;
+  color:var(--wsa-text)!important;
+  border-color:var(--wsa-border)!important;
+}
+
+body.wsa-clean-dashboard-active th {
+  background:#192034!important;
+  color:var(--wsa-muted)!important;
+  text-transform:uppercase!important;
+  font-size:12px!important;
+  letter-spacing:.08em!important;
+}
+
+/* Buttons */
+body.wsa-clean-dashboard-active button,
+body.wsa-clean-dashboard-active .button,
+body.wsa-clean-dashboard-active .wsa-btn,
+body.wsa-clean-dashboard-active .wsa-fsfd-btn,
+body.wsa-clean-dashboard-active input[type="submit"],
+body.wsa-clean-dashboard-active a.button {
+  min-height:44px!important;
+  border-radius:12px!important;
+  padding:11px 18px!important;
+  font-weight:900!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  text-decoration:none!important;
+  border:1px solid var(--wsa-border)!important;
+}
+
+/* Hide broken hamburger toggle inside content */
+body.wsa-clean-dashboard-active .wsa-clean-content .hamburger,
+body.wsa-clean-dashboard-active .wsa-clean-content .menu-toggle,
+body.wsa-clean-dashboard-active .wsa-clean-content .sidebar-toggle,
+body.wsa-clean-dashboard-active .wsa-clean-content [data-toggle="sidebar"],
+body.wsa-clean-dashboard-active .wsa-clean-content button[aria-label*="menu" i],
+body.wsa-clean-dashboard-active .wsa-clean-content button[aria-label*="toggle" i] {
+  display:none!important;
+}
+
+@media(max-width:900px){
+  body.wsa-clean-dashboard-active .wsa-clean-shell {
+    display:block!important;
+  }
+  body.wsa-clean-dashboard-active .wsa-clean-sidebar {
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    position:relative!important;
+    top:auto!important;
+  }
+  body.wsa-clean-dashboard-active .wsa-clean-content {
+    height:auto!important;
+    min-height:auto!important;
+    padding:18px!important;
+  }
+  body.wsa-clean-dashboard-active .wsa-fsfd-grid {
+    grid-template-columns:1fr!important;
+  }
+}

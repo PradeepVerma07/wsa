@@ -1,0 +1,20 @@
+Clean Frontend Layout Repair
+
+This build disables the previous aggressive/global layout fixes and replaces them with a safer frontend-only repair.
+
+What changed:
+- Does not affect wp-admin.
+- Loads only on /wsa-admin/ or face attendance view.
+- Does not use fixed overlay.
+- Uses real dashboard sidebar + real dashboard content.
+- Fixes right-side blank space.
+- Hides WordPress theme header/search/footer only on frontend dashboard.
+- Keeps Face Attendance and Face Registration links in left sidebar.
+
+Important:
+Deactivate/delete old separate emergency fix plugins before using this plugin:
+- WSA Frontend Dashboard Emergency Fix
+- WSA Dashboard Emergency Fix V2
+- WSA Dashboard Force Fix V3
+
+Then upload this ZIP and clear Hostinger cache + Ctrl F5.

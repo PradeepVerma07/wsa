@@ -1,0 +1,13 @@
+WSA 5.6.4 Final Mobile Dashboard Layout Fix
+
+Changed only frontend layout assets. Core attendance, salary, REST, database, and marking logic remain unchanged.
+
+Fixes included:
+1. Mobile sidebar is hidden by default and opens as a proper off-canvas overlay only when the hamburger toggle is clicked.
+2. Overlay closes on background click, menu item click, and desktop resize.
+3. Quick Mark mobile layout is forced to one staff card per row on mobile devices.
+4. Quick Mark buttons are full-width single-column on mobile for clean tap targets.
+5. Face Attendance mobile layout now stacks scanner and result cards cleanly.
+6. Face Attendance camera, result table, stat cards, action buttons, and registration steps are constrained to screen width.
+7. Added fallback CSS in public/css/admin-portal.css plus final high-priority CSS/JS in assets for stronger cache/order safety.
+8. Updated plugin header version to 5.6.4.

@@ -1,0 +1,24 @@
+Frontend Attendance Actions + Speed Fix
+Version: 5.6.6
+
+Fixes included:
+1. Frontend Attendance Edit now uses POST fallback endpoint:
+   /wp-json/wsa/v2/wsa-admin/attendance/{id}/update
+   This avoids PUT being blocked by hosting/firewall/proxy rules.
+
+2. Frontend Attendance Delete now uses POST fallback endpoint:
+   /wp-json/wsa/v2/wsa-admin/attendance/{id}/delete
+   This avoids DELETE being blocked by hosting/firewall/proxy rules.
+
+3. Attendance edit now updates att_date correctly, recalculates total hours/overtime,
+   and safely handles blank checkout time.
+
+4. Delete now validates the record and also removes linked break rows.
+
+5. Faster loading:
+   - Fixed DB version mismatch that was causing upgrade checks on every page load.
+   - Removed heavy Face DB install from every page load; it now runs only on version mismatch.
+   - Setup/page repair now runs once instead of every frontend request.
+   - Attendance REST list now caches staff lookups to avoid repeated queries per row.
+
+No attendance calculation, salary logic, Quick Mark logic, or mobile layout logic was removed.

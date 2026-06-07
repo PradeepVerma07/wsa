@@ -1,0 +1,15 @@
+Frontend Attendance Edit/Delete Final Fix - Version 5.6.9
+
+What changed:
+- Added inline Edit/Delete action handlers on attendance buttons.
+- Kept delegated click fallback for old/cached markup.
+- Added admin-ajax primary route for edit/delete.
+- Added hard admin-post browser form fallback for edit/delete.
+- If AJAX/REST is blocked by Hostinger/security/cache, the plugin submits a normal form and redirects back to /wsa-admin/.
+- Works for portal token login and WordPress administrator login.
+- Version bumped to 5.6.9 for cache refresh.
+
+Important after install:
+- Deactivate/delete the old plugin copy first.
+- Upload this ZIP and activate.
+- Clear LiteSpeed/browser cache or open the portal in incognito.

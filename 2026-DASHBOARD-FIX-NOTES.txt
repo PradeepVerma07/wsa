@@ -1,0 +1,20 @@
+2026 Modern Dashboard Fix
+
+This version adds a strong UI override to fix the broken frontend dashboard layout.
+
+Fixed:
+- Large white blank area around dashboard
+- Broken right content width
+- Overlapping Face Attendance title/header
+- Bad Face Attendance card spacing
+- Sidebar consistency
+- Face Attendance and Face Registration menu visibility
+- Modern 2026 cards, buttons, tabs, table styling
+- Mobile responsive dashboard layout
+
+After upload:
+1. Delete older plugin version if needed.
+2. Upload this ZIP.
+3. Clear Hostinger cache.
+4. Hard refresh browser: Ctrl + F5.
+5. If Elementor is used, set page layout to Full Width or Elementor Canvas.

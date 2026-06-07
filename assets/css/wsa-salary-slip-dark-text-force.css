@@ -1,0 +1,128 @@
+
+/* WSA Salary Slip Dark Text Force Fix
+   Loaded last. Fixes dark mode text color inside salary slip only.
+*/
+
+#wsa-ap-root .wsa-slip,
+#wsa-ap-root .wsa-slip *,
+body #wsa-ap-root .wsa-slip,
+body #wsa-ap-root .wsa-slip *,
+html body #wsa-ap-root .wsa-slip,
+html body #wsa-ap-root .wsa-slip * {
+  color: #111827 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+/* Slip base must stay white even in dark dashboard */
+html body #wsa-ap-root .wsa-slip {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 8px 24px rgba(15,23,42,.08) !important;
+}
+
+/* Secondary muted labels */
+html body #wsa-ap-root .wsa-slip p,
+html body #wsa-ap-root .wsa-slip span,
+html body #wsa-ap-root .wsa-slip small,
+html body #wsa-ap-root .wsa-slip label,
+html body #wsa-ap-root .wsa-slip td:first-child,
+html body #wsa-ap-root .wsa-slip .muted,
+html body #wsa-ap-root .wsa-slip .wsa-slip-note {
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+}
+
+/* Main headings and employee info */
+html body #wsa-ap-root .wsa-slip h1,
+html body #wsa-ap-root .wsa-slip h2,
+html body #wsa-ap-root .wsa-slip h3,
+html body #wsa-ap-root .wsa-slip h4,
+html body #wsa-ap-root .wsa-slip b,
+html body #wsa-ap-root .wsa-slip strong,
+html body #wsa-ap-root .wsa-slip td:last-child,
+html body #wsa-ap-root .wsa-slip .wsa-slip-brand *,
+html body #wsa-ap-root .wsa-slip .wsa-slip-info *,
+html body #wsa-ap-root .wsa-slip .wsa-slip-box h3 {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+/* Amounts should be green */
+html body #wsa-ap-root .wsa-slip .wsa-slip-net strong,
+html body #wsa-ap-root .wsa-slip .total td,
+html body #wsa-ap-root .wsa-slip .wsa-slip-box .total td,
+html body #wsa-ap-root .wsa-slip .net,
+html body #wsa-ap-root .wsa-slip .amount-success {
+  color: #16a34a !important;
+  -webkit-text-fill-color: #16a34a !important;
+}
+
+/* Salary slip boxes */
+html body #wsa-ap-root .wsa-slip .wsa-slip-box,
+html body #wsa-ap-root .wsa-slip .wsa-slip-info div {
+  background: #f8fafc !important;
+  border: 1px solid #e5e7eb !important;
+  color: #111827 !important;
+}
+
+/* Tables inside slip */
+html body #wsa-ap-root .wsa-slip table,
+html body #wsa-ap-root .wsa-slip thead,
+html body #wsa-ap-root .wsa-slip tbody,
+html body #wsa-ap-root .wsa-slip tr {
+  background: transparent !important;
+  color: #111827 !important;
+}
+
+html body #wsa-ap-root .wsa-slip td,
+html body #wsa-ap-root .wsa-slip th {
+  background: transparent !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Rule note */
+html body #wsa-ap-root .wsa-slip .wsa-slip-note {
+  background: #fff7ed !important;
+  color: #9a3412 !important;
+  -webkit-text-fill-color: #9a3412 !important;
+}
+
+/* Logo area */
+html body #wsa-ap-root .wsa-slip img {
+  background: #ffffff !important;
+}
+
+/* Frontend salary form stays theme aware */
+html body #wsa-ap-root .wsa-front-slip-form,
+html body #wsa-ap-root .wsa-front-slip-empty {
+  color: var(--ap-text, #f8fafc) !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+html body #wsa-ap-root .wsa-front-slip-form *,
+html body #wsa-ap-root .wsa-front-slip-empty * {
+  -webkit-text-fill-color: initial !important;
+}
+
+/* Print keeps slip clean */
+@media print {
+  html body #wsa-ap-root .wsa-slip,
+  html body #wsa-ap-root .wsa-slip * {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+  }
+
+  html body #wsa-ap-root .wsa-slip p,
+  html body #wsa-ap-root .wsa-slip span,
+  html body #wsa-ap-root .wsa-slip td:first-child {
+    color: #475569 !important;
+    -webkit-text-fill-color: #475569 !important;
+  }
+
+  html body #wsa-ap-root .wsa-slip .wsa-slip-net strong,
+  html body #wsa-ap-root .wsa-slip .total td {
+    color: #16a34a !important;
+    -webkit-text-fill-color: #16a34a !important;
+  }
+}

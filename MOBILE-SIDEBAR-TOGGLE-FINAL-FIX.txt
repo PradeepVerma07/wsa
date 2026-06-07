@@ -1,0 +1,8 @@
+WSA 5.6.5 Mobile Sidebar Toggle Final Fix
+
+Fixed issue where mobile sidebar did not open after clicking toggle.
+Root cause: two JavaScript click handlers were toggling the sidebar on the same tap, so it opened and immediately closed.
+Patch: removed duplicate toggle behavior from the final reliability layer; the main admin portal button is now the only toggle owner.
+Also added strict mobile CSS state: sidebar hidden by default, visible only with .open; overlay visible only with .visible.
+Quick Mark and Face Attendance mobile responsive layout rules are preserved.
+No attendance, salary, REST API, or database logic was changed.

@@ -1,0 +1,672 @@
+
+/* ==========================================================
+   Webtrionix Attendance - 2026 Modern Frontend Dashboard Fix
+   Purpose: Fix broken frontend layout without editing templates.
+   ========================================================== */
+
+:root{
+  --wsa26-bg:#060812;
+  --wsa26-sidebar:#0f1320;
+  --wsa26-panel:#111625;
+  --wsa26-panel-2:#151b2d;
+  --wsa26-card:#141a2b;
+  --wsa26-text:#f8fafc;
+  --wsa26-muted:#97a3b6;
+  --wsa26-border:rgba(255,255,255,.10);
+  --wsa26-primary:#7c5cff;
+  --wsa26-primary2:#3b82f6;
+  --wsa26-success:#22c55e;
+  --wsa26-danger:#ef4444;
+  --wsa26-warning:#f59e0b;
+  --wsa26-radius:16px;
+  --wsa26-shadow:0 24px 70px rgba(0,0,0,.30);
+}
+
+/* page reset for WordPress theme wrappers */
+body.admin-bar{
+  background:var(--wsa26-bg)!important;
+}
+
+body:has(.wsa-dashboard-shell),
+body:has(.wsa-fsfd-page),
+body:has(.wsa-portal),
+body:has(.admin-portal),
+body:has(.attendance-dashboard){
+  background:var(--wsa26-bg)!important;
+}
+
+body:has(.wsa-dashboard-shell) .site,
+body:has(.wsa-dashboard-shell) .site-main,
+body:has(.wsa-dashboard-shell) .site-content,
+body:has(.wsa-dashboard-shell) .content-area,
+body:has(.wsa-dashboard-shell) .entry-content,
+body:has(.wsa-fsfd-page) .site,
+body:has(.wsa-fsfd-page) .site-main,
+body:has(.wsa-fsfd-page) .site-content,
+body:has(.wsa-fsfd-page) .content-area,
+body:has(.wsa-fsfd-page) .entry-content,
+body:has(.admin-portal) .site,
+body:has(.admin-portal) .entry-content,
+body:has(.attendance-dashboard) .site,
+body:has(.attendance-dashboard) .entry-content{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  background:var(--wsa26-bg)!important;
+}
+
+/* hide title/header clutter on dashboard page */
+body:has(.wsa-dashboard-shell) .entry-title,
+body:has(.wsa-fsfd-page) .entry-title,
+body:has(.admin-portal) .entry-title,
+body:has(.attendance-dashboard) .entry-title{
+  display:none!important;
+}
+
+/* dashboard shell */
+.wsa-dashboard-shell,
+.admin-portal,
+.wsa-admin-portal,
+.attendance-dashboard,
+.wsa-dashboard,
+.wsa-frontend-dashboard{
+  width:100%!important;
+  max-width:none!important;
+  min-height:calc(100vh - 32px)!important;
+  display:grid!important;
+  grid-template-columns:286px minmax(0, 1fr)!important;
+  gap:0!important;
+  background:var(--wsa26-bg)!important;
+  overflow:hidden!important;
+  color:var(--wsa26-text)!important;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+}
+
+/* force left sidebar */
+.wsa-sidebar,
+.admin-sidebar,
+.dashboard-sidebar,
+.portal-sidebar,
+.attendance-sidebar,
+.wsa-dashboard-sidebar,
+.wsa-dashboard-shell > aside,
+.admin-portal > aside,
+.attendance-dashboard > aside{
+  width:286px!important;
+  min-width:286px!important;
+  max-width:286px!important;
+  height:calc(100vh - 32px)!important;
+  max-height:calc(100vh - 32px)!important;
+  position:sticky!important;
+  top:32px!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  background:linear-gradient(180deg,#101421,#0b0f19)!important;
+  border-right:1px solid var(--wsa26-border)!important;
+  padding:18px 10px!important;
+  box-sizing:border-box!important;
+  z-index:20!important;
+}
+
+/* sidebar brand */
+.wsa-sidebar h1,
+.wsa-sidebar h2,
+.admin-sidebar h1,
+.admin-sidebar h2,
+.dashboard-sidebar h1,
+.dashboard-sidebar h2{
+  font-size:18px!important;
+  line-height:1.25!important;
+  color:#fff!important;
+  margin:0!important;
+}
+
+.wsa-sidebar a,
+.admin-sidebar a,
+.dashboard-sidebar a,
+.portal-sidebar a,
+.attendance-sidebar a,
+.wsa-fsfd-sidebar-link{
+  display:flex!important;
+  align-items:center!important;
+  gap:12px!important;
+  width:calc(100% - 12px)!important;
+  min-height:46px!important;
+  padding:12px 14px!important;
+  margin:4px 6px!important;
+  border-radius:12px!important;
+  color:#99a3b7!important;
+  text-decoration:none!important;
+  font-weight:700!important;
+  font-size:15px!important;
+  box-sizing:border-box!important;
+  border:1px solid transparent!important;
+  transition:all .18s ease!important;
+}
+
+.wsa-sidebar a:hover,
+.admin-sidebar a:hover,
+.dashboard-sidebar a:hover,
+.portal-sidebar a:hover,
+.attendance-sidebar a:hover,
+.wsa-fsfd-sidebar-link:hover,
+.wsa-sidebar a.active,
+.admin-sidebar a.active,
+.dashboard-sidebar a.active,
+.portal-sidebar a.active,
+.attendance-sidebar a.active,
+.wsa-fsfd-sidebar-link.active{
+  color:#fff!important;
+  background:linear-gradient(135deg,rgba(124,92,255,.18),rgba(59,130,246,.12))!important;
+  border-color:rgba(124,92,255,.24)!important;
+}
+
+/* section labels */
+.wsa-sidebar small,
+.wsa-sidebar .section-title,
+.admin-sidebar small,
+.admin-sidebar .section-title,
+.dashboard-sidebar small,
+.dashboard-sidebar .section-title{
+  display:block!important;
+  color:#7f8aa3!important;
+  font-size:11px!important;
+  letter-spacing:.12em!important;
+  text-transform:uppercase!important;
+  font-weight:900!important;
+  padding:18px 16px 8px!important;
+}
+
+/* right content area */
+.wsa-main,
+.wsa-content,
+.wsa-dashboard-content,
+.dashboard-content,
+.admin-content,
+.portal-content,
+.attendance-content,
+.main-content,
+.wsa-dashboard-shell > main,
+.admin-portal > main,
+.attendance-dashboard > main{
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+  min-height:calc(100vh - 32px)!important;
+  height:calc(100vh - 32px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(124,92,255,.08),transparent 28%),
+    radial-gradient(circle at 80% 10%,rgba(59,130,246,.08),transparent 30%),
+    var(--wsa26-bg)!important;
+  padding:28px!important;
+  box-sizing:border-box!important;
+}
+
+/* centered page container */
+.wsa-main > *,
+.wsa-content > *,
+.wsa-dashboard-content > *,
+.dashboard-content > *,
+.admin-content > *,
+.portal-content > *,
+.attendance-content > *,
+.main-content > *{
+  max-width:1180px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* fix duplicated/overlapping top header */
+.wsa-page-header,
+.dashboard-header,
+.admin-topbar,
+.portal-topbar,
+.wsa-topbar,
+.wsa-fsfd-header,
+.wsa-fsfd-page > .wsa-fsfd-header:first-child{
+  width:100%!important;
+  max-width:1180px!important;
+  min-height:76px!important;
+  margin:0 auto 24px!important;
+  padding:20px 24px!important;
+  border-radius:18px!important;
+  background:linear-gradient(135deg,rgba(20,26,43,.96),rgba(17,22,37,.96))!important;
+  border:1px solid var(--wsa26-border)!important;
+  box-shadow:var(--wsa26-shadow)!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  box-sizing:border-box!important;
+  position:relative!important;
+  top:auto!important;
+}
+
+.wsa-page-header h1,
+.dashboard-header h1,
+.admin-topbar h1,
+.portal-topbar h1,
+.wsa-topbar h1,
+.wsa-fsfd-header h1{
+  font-size:24px!important;
+  line-height:1.2!important;
+  color:var(--wsa26-text)!important;
+  margin:0!important;
+}
+
+.wsa-page-header p,
+.dashboard-header p,
+.admin-topbar p,
+.portal-topbar p,
+.wsa-topbar p,
+.wsa-fsfd-header p{
+  color:var(--wsa26-muted)!important;
+  margin:6px 0 0!important;
+}
+
+/* Face attendance full fix */
+.wsa-fsfd-page{
+  width:100%!important;
+  max-width:1180px!important;
+  margin:0 auto!important;
+  padding:0!important;
+  background:transparent!important;
+  color:var(--wsa26-text)!important;
+  min-height:auto!important;
+}
+
+.wsa-fsfd-tabs{
+  max-width:1180px!important;
+  margin:0 auto 22px!important;
+  display:flex!important;
+  gap:10px!important;
+  flex-wrap:wrap!important;
+}
+
+.wsa-fsfd-tab{
+  display:inline-flex!important;
+  align-items:center!important;
+  min-height:44px!important;
+  padding:11px 16px!important;
+  border-radius:12px!important;
+  background:var(--wsa26-panel)!important;
+  border:1px solid var(--wsa26-border)!important;
+  color:var(--wsa26-text)!important;
+  font-weight:800!important;
+  text-decoration:none!important;
+}
+
+.wsa-fsfd-tab.active{
+  background:linear-gradient(135deg,var(--wsa26-primary),var(--wsa26-primary2))!important;
+  color:#fff!important;
+}
+
+.wsa-fsfd-grid{
+  max-width:1180px!important;
+  margin:0 auto!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr)!important;
+  gap:22px!important;
+  align-items:start!important;
+}
+
+.wsa-fsfd-card,
+.wsa-card,
+.dashboard-card,
+.admin-card,
+.portal-card,
+.quick-mark-card,
+.wsa-panel{
+  background:linear-gradient(180deg,var(--wsa26-card),var(--wsa26-panel))!important;
+  border:1px solid var(--wsa26-border)!important;
+  border-radius:18px!important;
+  box-shadow:var(--wsa26-shadow)!important;
+  color:var(--wsa26-text)!important;
+  padding:22px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+}
+
+.wsa-fsfd-card h2,
+.wsa-card h2,
+.dashboard-card h2,
+.admin-card h2,
+.portal-card h2{
+  font-size:22px!important;
+  color:var(--wsa26-text)!important;
+  margin:0 0 8px!important;
+  line-height:1.25!important;
+  opacity:1!important;
+}
+
+.wsa-fsfd-card p,
+.wsa-card p,
+.dashboard-card p{
+  color:var(--wsa26-muted)!important;
+}
+
+/* status stats row fix */
+.wsa-face-stats,
+.wsa-fsfd-stats,
+.face-attendance-stats,
+.stats-grid,
+.dashboard-stats{
+  width:100%!important;
+  max-width:1180px!important;
+  margin:0 auto 22px!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:16px!important;
+}
+
+.wsa-face-stats > *,
+.wsa-fsfd-stats > *,
+.face-attendance-stats > *,
+.stats-grid > *,
+.dashboard-stats > *{
+  background:linear-gradient(180deg,var(--wsa26-card),var(--wsa26-panel))!important;
+  border:1px solid var(--wsa26-border)!important;
+  border-radius:16px!important;
+  padding:18px!important;
+  color:var(--wsa26-text)!important;
+  box-shadow:0 16px 40px rgba(0,0,0,.18)!important;
+}
+
+/* camera card */
+.wsa-fsfd-card-head{
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:flex-start!important;
+  gap:16px!important;
+  margin-bottom:18px!important;
+}
+
+.wsa-fsfd-pill{
+  min-height:36px!important;
+  padding:0 14px!important;
+  border-radius:10px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:rgba(124,92,255,.18)!important;
+  color:#fff!important;
+  border:1px solid rgba(124,92,255,.32)!important;
+  font-size:13px!important;
+  font-weight:900!important;
+}
+
+.wsa-fsfd-camera{
+  width:100%!important;
+  aspect-ratio:16/10!important;
+  min-height:330px!important;
+  max-height:430px!important;
+  margin:18px 0!important;
+  border-radius:18px!important;
+  background:#050816!important;
+  border:1px solid rgba(124,92,255,.28)!important;
+  position:relative!important;
+  overflow:hidden!important;
+}
+
+.wsa-fsfd-camera video{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  display:block!important;
+}
+
+.wsa-fsfd-frame{
+  position:absolute!important;
+  inset:12%!important;
+  border:2px solid rgba(124,92,255,.95)!important;
+  border-radius:18px!important;
+  box-shadow:0 0 0 999px rgba(0,0,0,.10),0 0 36px rgba(124,92,255,.55)!important;
+  pointer-events:none!important;
+}
+
+/* result card */
+.wsa-fsfd-user{
+  display:flex!important;
+  align-items:center!important;
+  gap:16px!important;
+  padding:18px!important;
+  border-radius:16px!important;
+  background:rgba(124,92,255,.12)!important;
+  border:1px solid rgba(124,92,255,.22)!important;
+  margin:18px 0!important;
+}
+
+.wsa-fsfd-avatar{
+  width:60px!important;
+  height:60px!important;
+  min-width:60px!important;
+  border-radius:14px!important;
+  background:linear-gradient(135deg,var(--wsa26-primary),#ff7a45)!important;
+  color:#fff!important;
+  display:grid!important;
+  place-items:center!important;
+  font-weight:900!important;
+  font-size:18px!important;
+}
+
+.wsa-fsfd-list{
+  display:grid!important;
+  gap:0!important;
+  border:1px solid var(--wsa26-border)!important;
+  border-radius:16px!important;
+  overflow:hidden!important;
+}
+
+.wsa-fsfd-list div{
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+  gap:16px!important;
+  padding:16px 18px!important;
+  border-bottom:1px solid var(--wsa26-border)!important;
+  background:rgba(255,255,255,.015)!important;
+}
+
+.wsa-fsfd-list div:last-child{
+  border-bottom:0!important;
+}
+
+.wsa-fsfd-list span{
+  color:var(--wsa26-muted)!important;
+}
+
+.wsa-fsfd-list strong{
+  color:var(--wsa26-text)!important;
+}
+
+/* tables */
+table,
+.wsa-table,
+.attendance-table{
+  width:100%!important;
+  max-width:1180px!important;
+  margin:0 auto!important;
+  border-collapse:separate!important;
+  border-spacing:0!important;
+  background:var(--wsa26-card)!important;
+  border:1px solid var(--wsa26-border)!important;
+  border-radius:18px!important;
+  overflow:hidden!important;
+  color:var(--wsa26-text)!important;
+}
+
+th,td{
+  padding:18px 20px!important;
+  border-color:var(--wsa26-border)!important;
+  color:var(--wsa26-text)!important;
+}
+
+th{
+  background:var(--wsa26-panel-2)!important;
+  color:var(--wsa26-muted)!important;
+  text-transform:uppercase!important;
+  font-size:12px!important;
+  letter-spacing:.08em!important;
+}
+
+/* Buttons */
+button,
+.button,
+.wsa-btn,
+.wsa-fsfd-btn,
+input[type=submit],
+a.button{
+  min-height:44px!important;
+  border-radius:12px!important;
+  padding:11px 18px!important;
+  border:1px solid transparent!important;
+  font-weight:900!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  line-height:1.1!important;
+  text-decoration:none!important;
+  cursor:pointer!important;
+  transition:transform .18s ease, box-shadow .18s ease!important;
+}
+
+button:hover,
+.button:hover,
+.wsa-btn:hover,
+.wsa-fsfd-btn:hover{
+  transform:translateY(-1px)!important;
+  box-shadow:0 16px 36px rgba(0,0,0,.25)!important;
+}
+
+.wsa-fsfd-btn.primary,
+.wsa-btn-primary,
+.button-primary{
+  background:linear-gradient(135deg,var(--wsa26-primary),var(--wsa26-primary2))!important;
+  color:#fff!important;
+}
+
+.wsa-fsfd-btn.secondary{
+  background:rgba(255,255,255,.04)!important;
+  color:#fff!important;
+  border-color:var(--wsa26-border)!important;
+}
+
+.wsa-fsfd-btn.danger{
+  background:rgba(239,68,68,.14)!important;
+  color:#fecaca!important;
+  border-color:rgba(239,68,68,.35)!important;
+}
+
+.wsa-fsfd-btn.success{
+  background:var(--wsa26-success)!important;
+  color:#fff!important;
+}
+
+/* prevent huge faded duplicate heading */
+.wsa-fsfd-card h2:first-letter,
+.wsa-fsfd-card h1:first-letter{
+  opacity:1!important;
+}
+
+.wsa-fsfd-card *{
+  opacity:1;
+}
+
+/* Fix white right gutter from browser/page scroll */
+body{
+  margin:0!important;
+}
+
+#page,
+.site,
+.wp-site-blocks{
+  background:var(--wsa26-bg)!important;
+}
+
+/* Responsive */
+@media(max-width:1100px){
+  .wsa-dashboard-shell,
+  .admin-portal,
+  .wsa-admin-portal,
+  .attendance-dashboard,
+  .wsa-dashboard,
+  .wsa-frontend-dashboard{
+    grid-template-columns:250px minmax(0,1fr)!important;
+  }
+
+  .wsa-sidebar,
+  .admin-sidebar,
+  .dashboard-sidebar,
+  .portal-sidebar,
+  .attendance-sidebar,
+  .wsa-dashboard-sidebar{
+    width:250px!important;
+    min-width:250px!important;
+    max-width:250px!important;
+  }
+
+  .wsa-fsfd-grid{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:760px){
+  .wsa-dashboard-shell,
+  .admin-portal,
+  .wsa-admin-portal,
+  .attendance-dashboard,
+  .wsa-dashboard,
+  .wsa-frontend-dashboard{
+    display:block!important;
+  }
+
+  .wsa-sidebar,
+  .admin-sidebar,
+  .dashboard-sidebar,
+  .portal-sidebar,
+  .attendance-sidebar,
+  .wsa-dashboard-sidebar{
+    position:relative!important;
+    top:auto!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+  }
+
+  .wsa-main,
+  .wsa-content,
+  .wsa-dashboard-content,
+  .dashboard-content,
+  .admin-content,
+  .portal-content,
+  .attendance-content,
+  .main-content{
+    height:auto!important;
+    min-height:auto!important;
+    padding:18px!important;
+  }
+
+  .wsa-fsfd-header{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+  }
+
+  .wsa-face-stats,
+  .wsa-fsfd-stats,
+  .face-attendance-stats,
+  .stats-grid,
+  .dashboard-stats{
+    grid-template-columns:1fr!important;
+  }
+
+  table{
+    display:block!important;
+    overflow-x:auto!important;
+    white-space:nowrap!important;
+  }
+}

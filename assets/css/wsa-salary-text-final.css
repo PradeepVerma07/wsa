@@ -1,0 +1,259 @@
+
+/* WSA Salary Slip + Professional Text Color Final Fix */
+/* Scoped only to frontend dashboard */
+
+body.wsa-zb-active,
+body.wsa-final-dashboard-active,
+body:has(#wsa-ap-root) {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Dark mode professional text */
+body[data-zb-theme="dark"] #wsa-ap-root,
+body[data-wsa-theme="dark"] #wsa-ap-root,
+body.wsa-final-dark #wsa-ap-root {
+  --ap-text: #f8fafc !important;
+  --ap-muted: #a8b0c2 !important;
+  --ap-muted2: #7f8aa3 !important;
+  --ap-bg: #07080f !important;
+  --ap-bg2: #10131f !important;
+  --ap-bg3: #171b2b !important;
+  --ap-border: rgba(255,255,255,.10) !important;
+}
+
+/* Light mode professional, WP-admin-like clean look */
+body[data-zb-theme="light"] #wsa-ap-root,
+body[data-wsa-theme="light"] #wsa-ap-root,
+body.wsa-final-light #wsa-ap-root {
+  --ap-text: #1d2327 !important;
+  --ap-muted: #50575e !important;
+  --ap-muted2: #646970 !important;
+  --ap-bg: #f0f0f1 !important;
+  --ap-bg2: #ffffff !important;
+  --ap-bg3: #f6f7f7 !important;
+  --ap-border: #c3c4c7 !important;
+  --ap-accent: #2271b1 !important;
+  --ap-blue: #2271b1 !important;
+}
+
+/* Make every text readable */
+#wsa-ap-root,
+#wsa-ap-root * {
+  color: var(--ap-text) !important;
+}
+
+#wsa-ap-root p,
+#wsa-ap-root small,
+#wsa-ap-root label,
+#wsa-ap-root .ap-muted,
+#wsa-ap-root .ap-subtitle,
+#wsa-ap-root .ap-desc,
+#wsa-ap-root .ap-meta,
+#wsa-ap-root .ap-card small,
+#wsa-ap-root .ap-stat-label,
+#wsa-ap-root .ap-table th,
+#wsa-ap-root th {
+  color: var(--ap-muted) !important;
+}
+
+#wsa-ap-root h1,
+#wsa-ap-root h2,
+#wsa-ap-root h3,
+#wsa-ap-root h4,
+#wsa-ap-root h5,
+#wsa-ap-root strong,
+#wsa-ap-root b,
+#wsa-ap-root .ap-title {
+  color: var(--ap-text) !important;
+}
+
+/* Inputs and selects */
+#wsa-ap-root input,
+#wsa-ap-root select,
+#wsa-ap-root textarea {
+  color: var(--ap-text) !important;
+  background: var(--ap-bg3) !important;
+  border: 1px solid var(--ap-border) !important;
+}
+
+#wsa-ap-root input::placeholder,
+#wsa-ap-root textarea::placeholder {
+  color: var(--ap-muted2) !important;
+}
+
+/* Cards and table polish */
+#wsa-ap-root .ap-card,
+#wsa-ap-root .ap-form-card,
+#wsa-ap-root .ap-panel,
+#wsa-ap-root .ap-stat,
+#wsa-ap-root .ap-table-wrap,
+#wsa-ap-root table {
+  background: var(--ap-bg2) !important;
+  border-color: var(--ap-border) !important;
+}
+
+#wsa-ap-root table,
+#wsa-ap-root thead,
+#wsa-ap-root tbody,
+#wsa-ap-root tr,
+#wsa-ap-root td,
+#wsa-ap-root th {
+  color: var(--ap-text) !important;
+  border-color: var(--ap-border) !important;
+}
+
+#wsa-ap-root th,
+#wsa-ap-root thead {
+  background: var(--ap-bg3) !important;
+  color: var(--ap-muted) !important;
+}
+
+/* Sidebar text */
+#wsa-ap-root .ap-nav-item,
+#wsa-ap-root .ap-nav-item *,
+#wsa-ap-root .wsa-ap-sidebar,
+#wsa-ap-root .wsa-ap-sidebar * {
+  color: var(--ap-muted) !important;
+}
+
+#wsa-ap-root .ap-nav-item.active,
+#wsa-ap-root .ap-nav-item.active *,
+#wsa-ap-root .ap-nav-item:hover,
+#wsa-ap-root .ap-nav-item:hover * {
+  color: var(--ap-text) !important;
+}
+
+/* Salary slip stuck loading fix UI */
+#wsa-ap-root .wsa-salary-fallback {
+  max-width: 1180px;
+  margin: 0 auto;
+  background: var(--ap-bg2);
+  border: 1px solid var(--ap-border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.12);
+}
+
+#wsa-ap-root .wsa-salary-fallback h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  color: var(--ap-text) !important;
+}
+
+#wsa-ap-root .wsa-salary-fallback p {
+  margin: 0 0 18px;
+  color: var(--ap-muted) !important;
+}
+
+#wsa-ap-root .wsa-salary-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+#wsa-ap-root .wsa-salary-actions button {
+  min-height: 42px;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 800;
+  border: 1px solid var(--ap-border);
+  background: var(--ap-accent, #2271b1);
+  color: #fff !important;
+  cursor: pointer;
+}
+
+#wsa-ap-root .wsa-salary-actions button.secondary {
+  background: transparent;
+  color: var(--ap-text) !important;
+}
+
+#wsa-ap-root .wsa-salary-empty {
+  border: 1px dashed var(--ap-border);
+  border-radius: 14px;
+  padding: 30px;
+  text-align: center;
+  background: var(--ap-bg3);
+}
+
+#wsa-ap-root .wsa-salary-slip-preview {
+  background: var(--ap-bg2);
+  border: 1px solid var(--ap-border);
+  border-radius: 14px;
+  padding: 22px;
+  margin-top: 18px;
+}
+
+#wsa-ap-root .wsa-slip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ap-border);
+}
+
+#wsa-ap-root .wsa-slip-row:last-child {
+  border-bottom: 0;
+}
+
+#wsa-ap-root .wsa-slip-row span:first-child {
+  color: var(--ap-muted) !important;
+}
+
+#wsa-ap-root .wsa-slip-row strong {
+  color: var(--ap-text) !important;
+}
+
+/* Hide infinite loading only if fallback appears */
+#wsa-ap-root .wsa-salary-page-fixed .ap-loader,
+#wsa-ap-root .wsa-salary-page-fixed .loader,
+#wsa-ap-root .wsa-salary-page-fixed [class*="loading"] {
+  display: none !important;
+}
+
+/* Light mode sidebar separation */
+body[data-zb-theme="light"] #wsa-ap-root .wsa-ap-sidebar,
+body[data-wsa-theme="light"] #wsa-ap-root .wsa-ap-sidebar {
+  background: #ffffff !important;
+  border-right: 1px solid #c3c4c7 !important;
+}
+
+body[data-zb-theme="light"] #wsa-ap-root .wsa-ap-main,
+body[data-wsa-theme="light"] #wsa-ap-root .wsa-ap-main,
+body[data-zb-theme="light"] #wsa-ap-root .wsa-ap-content,
+body[data-wsa-theme="light"] #wsa-ap-root .wsa-ap-content {
+  background: #f0f0f1 !important;
+}
+
+/* Dark mode elegant background */
+body[data-zb-theme="dark"] #wsa-ap-root .wsa-ap-main,
+body[data-wsa-theme="dark"] #wsa-ap-root .wsa-ap-main {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(99,102,241,.10), transparent 32%),
+    radial-gradient(circle at 90% 5%, rgba(20,184,166,.08), transparent 30%),
+    #07080f !important;
+}
+
+@media print {
+  #wpadminbar,
+  .wsa-ap-sidebar,
+  .wsa-ap-topbar,
+  #wsa-zb-theme-switcher,
+  #wsa-final-theme-switcher,
+  #wsa-salary-text-theme-note {
+    display: none !important;
+  }
+  #wsa-ap-root,
+  #wsa-ap-root .wsa-ap-main,
+  #wsa-ap-root .wsa-ap-content {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+  #wsa-ap-root * {
+    color: #000 !important;
+  }
+}

@@ -1,0 +1,344 @@
+
+/**
+ * Webtrionix Attendance - Frontend Dashboard Layout Fix
+ * Fixes white gaps, narrow content, sidebar/content alignment, table overflow.
+ */
+
+html body.page,
+html body.single,
+html body {
+  overflow-x: hidden !important;
+}
+
+/* Remove WordPress theme boxed layout around dashboard */
+body:has(.wsa-dashboard-shell),
+body:has(.wsa-admin-portal),
+body:has(.attendance-dashboard),
+body:has(.wsa-fsfd-page),
+body:has(.wsa-frontend-dashboard) {
+  background: #05070f !important;
+}
+
+body:has(.wsa-dashboard-shell) .site,
+body:has(.wsa-admin-portal) .site,
+body:has(.attendance-dashboard) .site,
+body:has(.wsa-fsfd-page) .site,
+body:has(.wsa-frontend-dashboard) .site,
+body:has(.wsa-dashboard-shell) .site-content,
+body:has(.wsa-admin-portal) .site-content,
+body:has(.attendance-dashboard) .site-content,
+body:has(.wsa-fsfd-page) .site-content,
+body:has(.wsa-frontend-dashboard) .site-content,
+body:has(.wsa-dashboard-shell) .content-area,
+body:has(.wsa-admin-portal) .content-area,
+body:has(.attendance-dashboard) .content-area,
+body:has(.wsa-fsfd-page) .content-area,
+body:has(.wsa-frontend-dashboard) .content-area,
+body:has(.wsa-dashboard-shell) .entry-content,
+body:has(.wsa-admin-portal) .entry-content,
+body:has(.attendance-dashboard) .entry-content,
+body:has(.wsa-fsfd-page) .entry-content,
+body:has(.wsa-frontend-dashboard) .entry-content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide unnecessary page title spacing on dashboard pages */
+body:has(.wsa-dashboard-shell) .entry-title,
+body:has(.wsa-admin-portal) .entry-title,
+body:has(.attendance-dashboard) .entry-title,
+body:has(.wsa-fsfd-page) .entry-title,
+body:has(.wsa-frontend-dashboard) .entry-title {
+  display: none !important;
+}
+
+/* Main dashboard shell normalization */
+.wsa-dashboard-shell,
+.wsa-admin-portal,
+.attendance-dashboard,
+.wsa-frontend-dashboard,
+.wsa-dashboard,
+.admin-portal {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  min-height: calc(100vh - 32px) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: 280px minmax(0, 1fr) !important;
+  background: #05070f !important;
+  color: #f8fafc !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Sidebar fix */
+.wsa-sidebar,
+.dashboard-sidebar,
+.admin-sidebar,
+.portal-sidebar,
+.attendance-sidebar,
+.wsa-dashboard-sidebar,
+aside:has(a),
+nav:has(a) {
+  width: 280px !important;
+  max-width: 280px !important;
+  min-width: 280px !important;
+  height: calc(100vh - 32px) !important;
+  max-height: calc(100vh - 32px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  background: #11131f !important;
+  border-right: 1px solid rgba(255,255,255,.08) !important;
+  box-sizing: border-box !important;
+  position: sticky !important;
+  top: 32px !important;
+  padding-bottom: 24px !important;
+}
+
+/* Content fix */
+.wsa-main,
+.wsa-content,
+.wsa-dashboard-content,
+.dashboard-content,
+.admin-content,
+.portal-content,
+.main-content,
+.attendance-content,
+main:has(.wsa-fsfd-page),
+main:has(table),
+#content:has(.wsa-fsfd-page),
+.entry-content:has(.wsa-fsfd-page) {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  min-height: calc(100vh - 32px) !important;
+  background: #05070f !important;
+  padding: 24px 32px !important;
+  margin: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Remove inner boxed white frame */
+.wsa-main > .container,
+.wsa-content > .container,
+.dashboard-content > .container,
+.admin-content > .container,
+.portal-content > .container,
+.entry-content > .container,
+.wsa-main > .wrap,
+.dashboard-content > .wrap,
+.admin-content > .wrap {
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* Dashboard page top bar */
+.wsa-page-header,
+.dashboard-header,
+.admin-topbar,
+.portal-topbar,
+.wsa-topbar {
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin: 0 auto 24px !important;
+  background: #121522 !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  border-radius: 14px !important;
+  padding: 20px 24px !important;
+  box-sizing: border-box !important;
+}
+
+/* Cards and sections */
+.wsa-card,
+.dashboard-card,
+.admin-card,
+.portal-card,
+.quick-mark-card,
+.wsa-panel,
+section.card {
+  background: #121522 !important;
+  border: 1px solid rgba(255,255,255,.09) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,.20) !important;
+  color: #f8fafc !important;
+  box-sizing: border-box !important;
+}
+
+/* Table fix for Who's Inside / attendance lists */
+.wsa-content table,
+.wsa-main table,
+.dashboard-content table,
+.admin-content table,
+.portal-content table,
+.entry-content table,
+table.wsa-table,
+table.attendance-table {
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  table-layout: auto !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  background: #121522 !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  color: #f8fafc !important;
+}
+
+.wsa-content th,
+.wsa-content td,
+.wsa-main th,
+.wsa-main td,
+.dashboard-content th,
+.dashboard-content td,
+.admin-content th,
+.admin-content td,
+.portal-content th,
+.portal-content td,
+.entry-content th,
+.entry-content td {
+  padding: 18px 20px !important;
+  border-color: rgba(255,255,255,.10) !important;
+  vertical-align: middle !important;
+}
+
+.wsa-content th,
+.wsa-main th,
+.dashboard-content th,
+.admin-content th,
+.portal-content th,
+.entry-content th {
+  background: #191d2d !important;
+  color: #98a2b3 !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+  letter-spacing: .08em !important;
+}
+
+/* Quick mark button restore / consistency */
+.quick-mark button,
+.quick-mark .button,
+.wsa-quick-mark button,
+.wsa-quick-mark .button,
+button[data-action="checkout"],
+button[value="checkout"],
+.checkout,
+.check-out,
+.wsa-checkout,
+.wsa-btn-checkout {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.quick-mark .actions,
+.wsa-quick-mark .actions,
+.staff-actions,
+.attendance-actions {
+  display: flex !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+
+/* All buttons elegant rectangular */
+button,
+.button,
+.wsa-btn,
+.wsa-fsfd-btn,
+input[type="submit"],
+a.button {
+  border-radius: 8px !important;
+}
+
+/* Face sidebar link should be visible */
+.wsa-fsfd-sidebar-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-height: 48px !important;
+  padding: 12px 16px !important;
+  margin: 4px 8px !important;
+  border-radius: 8px !important;
+  color: #a7adbd !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  box-sizing: border-box !important;
+}
+
+.wsa-fsfd-sidebar-link:hover,
+.wsa-fsfd-sidebar-link.active {
+  background: rgba(109,93,252,.16) !important;
+  color: #fff !important;
+}
+
+/* Admin bar offset */
+body.admin-bar .wsa-sidebar,
+body.admin-bar .dashboard-sidebar,
+body.admin-bar .admin-sidebar,
+body.admin-bar .portal-sidebar,
+body.admin-bar .attendance-sidebar,
+body.admin-bar .wsa-dashboard-sidebar {
+  top: 32px !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .wsa-dashboard-shell,
+  .wsa-admin-portal,
+  .attendance-dashboard,
+  .wsa-frontend-dashboard,
+  .wsa-dashboard,
+  .admin-portal {
+    grid-template-columns: 1fr !important;
+  }
+
+  .wsa-sidebar,
+  .dashboard-sidebar,
+  .admin-sidebar,
+  .portal-sidebar,
+  .attendance-sidebar,
+  .wsa-dashboard-sidebar,
+  aside:has(a),
+  nav:has(a) {
+    position: relative !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .wsa-main,
+  .wsa-content,
+  .wsa-dashboard-content,
+  .dashboard-content,
+  .admin-content,
+  .portal-content,
+  .main-content,
+  .attendance-content {
+    padding: 18px !important;
+    min-height: auto !important;
+  }
+
+  .wsa-content table,
+  .wsa-main table,
+  .dashboard-content table,
+  .admin-content table,
+  .portal-content table,
+  .entry-content table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+}

@@ -1,0 +1,17 @@
+Frontend Salary Slip WP Admin Match
+
+Fixed:
+- Frontend Salary Slip page now matches the WP Admin Salary Slip page.
+- Same Month / Year / Staff form.
+- Same Generate One button.
+- Same Generate All button.
+- Same Print / Save PDF button.
+- Same salary slip card design.
+- Same Salary Breakup and Attendance Summary layout.
+- Same rule note.
+- Added cache-busting version so browser loads the new JS/CSS.
+
+After upload:
+1. Clear Hostinger cache.
+2. Open /wsa-admin/.
+3. Press Ctrl + F5.

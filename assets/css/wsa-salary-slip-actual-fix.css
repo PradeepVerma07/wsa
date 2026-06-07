@@ -1,0 +1,25 @@
+
+/* Salary Slip Actual Fix — only readability */
+#wsa-ap-root .ap-salary-slip,
+#wsa-ap-root .ap-slip-output,
+#wsa-ap-root .ap-salary-slip * {
+  color: var(--ap-text) !important;
+}
+
+#wsa-ap-root .ap-salary-slip p,
+#wsa-ap-root .ap-salary-slip span,
+#wsa-ap-root .ap-salary-slip td:first-child {
+  color: var(--ap-muted) !important;
+}
+
+#wsa-ap-root .ap-salary-slip strong,
+#wsa-ap-root .ap-salary-slip b,
+#wsa-ap-root .ap-salary-slip h2,
+#wsa-ap-root .ap-salary-slip h3,
+#wsa-ap-root .ap-money {
+  color: var(--ap-text) !important;
+}
+
+#wsa-ap-root .ap-salary-slip table {
+  width: 100%;
+}

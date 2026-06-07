@@ -1,0 +1,13 @@
+Frontend Attendance Edit/Delete Final Fix - v5.6.7
+
+Fixed:
+- Attendance edit button now uses delegated click binding so it works after filters/table reloads/mobile scroll.
+- Attendance delete button now uses delegated click binding and a stronger fallback request flow.
+- Added simple POST /attendance/{id} action route with _wsa_action=update/delete.
+- Kept /attendance/{id}/update and /attendance/{id}/delete fallback endpoints.
+- Kept PUT/DELETE fallback for old installs.
+- Added token body/query fallback for hosts that strip X-WSA-Admin-Token headers.
+- Attendance list speed improved by caching staff lookups during recalculation.
+- Action buttons now have larger click area on desktop/mobile.
+
+No salary calculation, QR, face attendance, or dashboard logic was changed.

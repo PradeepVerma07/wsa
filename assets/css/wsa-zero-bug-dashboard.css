@@ -1,0 +1,1165 @@
+
+/* WSA Zero Bug Final Dashboard Fix */
+/* Scoped only on /wsa-admin after JS adds body.wsa-zb-active */
+
+body.wsa-zb-active {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: var(--zb-bg) !important;
+}
+
+body.wsa-zb-active[data-zb-theme="dark"] {
+  --zb-bg: #07080f;
+  --zb-bg2: #0f111a;
+  --zb-bg3: #161824;
+  --zb-border: rgba(255,255,255,.08);
+  --zb-text: #f0f2ff;
+  --zb-muted: #8b93a7;
+  --zb-accent: #ff4d00;
+  --zb-blue: #6366f1;
+}
+
+body.wsa-zb-active[data-zb-theme="light"] {
+  --zb-bg: #f4f7fb;
+  --zb-bg2: #ffffff;
+  --zb-bg3: #f8fafc;
+  --zb-border: rgba(15,23,42,.12);
+  --zb-text: #101828;
+  --zb-muted: #667085;
+  --zb-accent: #f05a28;
+  --zb-blue: #4f46e5;
+}
+
+/* Hide public theme chrome only on dashboard page */
+body.wsa-zb-active header,
+body.wsa-zb-active footer,
+body.wsa-zb-active .site-header,
+body.wsa-zb-active .site-footer,
+body.wsa-zb-active .main-navigation,
+body.wsa-zb-active .wp-block-navigation,
+body.wsa-zb-active .wp-block-search,
+body.wsa-zb-active .search,
+body.wsa-zb-active .search-form,
+body.wsa-zb-active .navbar {
+  display: none !important;
+}
+
+/* Remove WP theme spacing */
+body.wsa-zb-active #page,
+body.wsa-zb-active #content,
+body.wsa-zb-active .site,
+body.wsa-zb-active .site-content,
+body.wsa-zb-active .site-main,
+body.wsa-zb-active .content-area,
+body.wsa-zb-active .entry-content,
+body.wsa-zb-active .wp-site-blocks,
+body.wsa-zb-active main,
+body.wsa-zb-active article,
+body.wsa-zb-active .wp-block-post-content,
+body.wsa-zb-active .is-layout-constrained,
+body.wsa-zb-active .wp-block-group {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--zb-bg) !important;
+  box-sizing: border-box !important;
+}
+
+body.wsa-zb-active .entry-title,
+body.wsa-zb-active .page-title {
+  display: none !important;
+}
+
+/* Exact dashboard root */
+body.wsa-zb-active #wsa-ap-root {
+  position: fixed !important;
+  inset: var(--zb-admin-offset, 32px) 0 0 0 !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: calc(100vh - var(--zb-admin-offset, 32px)) !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--zb-bg) !important;
+  overflow: hidden !important;
+  z-index: 9998 !important;
+}
+
+/* Layout */
+body.wsa-zb-active #wsa-ap-root .wsa-ap-layout {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: calc(100vh - var(--zb-admin-offset, 32px)) !important;
+  min-height: 0 !important;
+  display: flex !important;
+  overflow: hidden !important;
+  background: var(--zb-bg) !important;
+}
+
+/* Sidebar */
+body.wsa-zb-active #wsa-ap-root .wsa-ap-sidebar {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  width: var(--ap-sidebar-w, 240px) !important;
+  min-width: var(--ap-sidebar-w, 240px) !important;
+  max-width: var(--ap-sidebar-w, 240px) !important;
+  flex: 0 0 var(--ap-sidebar-w, 240px) !important;
+  height: calc(100vh - var(--zb-admin-offset, 32px)) !important;
+  max-height: calc(100vh - var(--zb-admin-offset, 32px)) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scrollbar-width: thin !important;
+}
+
+/* Main content area */
+body.wsa-zb-active #wsa-ap-root .wsa-ap-main {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: calc(100vw - var(--ap-sidebar-w, 240px)) !important;
+  max-width: calc(100vw - var(--ap-sidebar-w, 240px)) !important;
+  height: calc(100vh - var(--zb-admin-offset, 32px)) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin-left: 0 !important;
+  background:
+    radial-gradient(circle at 16% 0%, rgba(99,102,241,.10), transparent 32%),
+    radial-gradient(circle at 90% 5%, rgba(20,184,166,.08), transparent 30%),
+    var(--zb-bg) !important;
+}
+
+/* Topbar */
+body.wsa-zb-active #wsa-ap-root .wsa-ap-topbar {
+  flex: 0 0 var(--ap-header-h, 56px) !important;
+  width: 100% !important;
+  max-width: none !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9 !important;
+}
+
+/* Inner content scroll */
+body.wsa-zb-active #wsa-ap-root .wsa-ap-content {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+  scrollbar-width: thin !important;
+}
+
+/* Centered page content */
+body.wsa-zb-active #wsa-ap-root .wsa-ap-content > * {
+  max-width: 1180px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Remove old injected duplicate links */
+body.wsa-zb-active #wsa-ap-root .wsa-fsfd-sidebar-link {
+  display: none !important;
+}
+
+/* Hide desktop hamburger/toggle */
+body.wsa-zb-active #wsa-ap-root .ap-menu-toggle {
+  display: none !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .wsa-ap-overlay {
+  display: none !important;
+}
+
+/* Sidebar duplicate face nav fallback hide: only keep first data-page item */
+body.wsa-zb-active #wsa-ap-root .zb-duplicate-face {
+  display: none !important;
+}
+
+/* SaaS polish */
+body.wsa-zb-active #wsa-ap-root .ap-card,
+body.wsa-zb-active #wsa-ap-root .ap-stat,
+body.wsa-zb-active #wsa-ap-root .ap-quick-card,
+body.wsa-zb-active #wsa-ap-root .ap-form-card {
+  border-radius: 16px !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,.16) !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-btn,
+body.wsa-zb-active #wsa-ap-root button,
+body.wsa-zb-active #wsa-ap-root input[type="submit"] {
+  border-radius: 10px !important;
+}
+
+/* Theme switcher */
+#wsa-zb-theme-switcher {
+  position: fixed !important;
+  right: 22px !important;
+  bottom: 22px !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  gap: 8px !important;
+  padding: 8px !important;
+  border-radius: 14px !important;
+  background: var(--zb-bg2) !important;
+  border: 1px solid var(--zb-border) !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,.22) !important;
+}
+
+#wsa-zb-theme-switcher button {
+  min-height: 38px !important;
+  padding: 8px 12px !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: var(--zb-text) !important;
+  border: 1px solid var(--zb-border) !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+#wsa-zb-theme-switcher button.active {
+  background: linear-gradient(135deg, #6366f1, #2563eb) !important;
+  color: #fff !important;
+}
+
+/* Keep portal modals above the fixed full-screen dashboard shell. */
+body.wsa-zb-active .ap-modal-backdrop.open {
+  z-index: 1002000 !important;
+}
+
+body.wsa-zb-active .ap-modal-backdrop.open .ap-modal {
+  max-width: min(1000px, calc(100vw - 40px)) !important;
+}
+
+body.wsa-zb-active .ap-modal-backdrop.open .ap-modal-actions {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+body.wsa-zb-active .ap-modal-backdrop.open .ap-btn--print {
+  background: #111827 !important;
+  border-color: #111827 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+body.wsa-zb-active .ap-modal .ap-salary-detail .ap-grid-2 > .ap-card,
+body.wsa-zb-active .ap-modal .ap-salary-detail .ap-inner-card {
+  min-width: 0 !important;
+}
+
+body.wsa-zb-active .ap-modal .ap-salary-detail .ap-salary-breakup-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin !important;
+}
+
+body.wsa-zb-active .ap-modal .ap-salary-detail .ap-salary-breakup-table {
+  min-width: 620px !important;
+  table-layout: auto !important;
+}
+
+body.wsa-zb-active .ap-modal .ap-salary-detail .ap-salary-breakup-table td:first-child {
+  min-width: 240px !important;
+  white-space: nowrap !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  body.wsa-zb-active {
+    overflow: auto !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-layout {
+    display: block !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-sidebar {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    max-height: 320px !important;
+    overflow-y: auto !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-content {
+    overflow: visible !important;
+    padding: 16px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-grid-2,
+  body.wsa-zb-active #wsa-ap-root .ap-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-table-wrap {
+    overflow-x: auto !important;
+  }
+}
+
+
+/* WSA 5.6.3 Mobile Dashboard Final Patch */
+/* Frontend admin portal: professional mobile off-canvas sidebar + Quick Mark alignment. */
+body.wsa-zb-active #wsa-ap-root,
+body.wsa-zb-active #wsa-ap-root * {
+  box-sizing: border-box !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-menu-toggle {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid var(--zb-border, rgba(255,255,255,.10)) !important;
+  background: rgba(255,255,255,.06) !important;
+  color: var(--zb-text, #f0f2ff) !important;
+  line-height: 1 !important;
+  border-radius: 12px !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  align-items: stretch !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-card {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-top {
+  align-items: flex-start !important;
+  min-width: 0 !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-info {
+  min-width: 0 !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-top .ap-badge {
+  margin-left: auto !important;
+  flex: 0 0 auto !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-btns {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-btns .ap-btn {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 42px !important;
+  padding: 10px 8px !important;
+  white-space: normal !important;
+  text-align: center !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-btns .ap-w-full,
+body.wsa-zb-active #wsa-ap-root .ap-qm-btns .ap-btn:only-child {
+  grid-column: 1 / -1 !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-flex {
+  flex-wrap: wrap !important;
+  line-height: 1.45 !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-filter-row {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  align-items: end !important;
+}
+
+@media (max-width: 900px) {
+  body.wsa-zb-active,
+  body.wsa-zb-active.wsa-ap-sidebar-open {
+    overflow: hidden !important;
+    background: var(--zb-bg, #07080f) !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root {
+    position: fixed !important;
+    inset: var(--zb-admin-offset, 0px) 0 0 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    z-index: 9998 !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-layout {
+    display: flex !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-sidebar {
+    position: fixed !important;
+    top: var(--zb-admin-offset, 0px) !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: min(86vw, 312px) !important;
+    min-width: 0 !important;
+    max-width: min(86vw, 312px) !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    max-height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    transform: translateX(-105%) !important;
+    transition: transform .28s cubic-bezier(.2,.8,.2,1) !important;
+    z-index: 10001 !important;
+    box-shadow: 20px 0 70px rgba(0,0,0,.45) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    border-right: 1px solid var(--zb-border, rgba(255,255,255,.10)) !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-sidebar.open {
+    transform: translateX(0) !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-overlay {
+    position: fixed !important;
+    top: var(--zb-admin-offset, 0px) !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    background: rgba(2,6,23,.64) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    z-index: 10000 !important;
+    display: none !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-overlay.visible {
+    display: block !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    margin-left: 0 !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-topbar {
+    position: sticky !important;
+    top: 0 !important;
+    min-height: 58px !important;
+    padding: 0 12px !important;
+    gap: 10px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-menu-toggle {
+    display: inline-flex !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-topbar h1 {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 15px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-topbar-clock {
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-content {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 14px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-content > * {
+    max-width: 100% !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-page-head {
+    align-items: flex-start !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-page-head,
+  body.wsa-zb-active #wsa-ap-root .ap-page-head-right {
+    width: 100% !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-page-head-right .ap-btn,
+  body.wsa-zb-active #wsa-ap-root #qmRefresh {
+    width: 100% !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-grid-2,
+  body.wsa-zb-active #wsa-ap-root .ap-grid-3,
+  body.wsa-zb-active #wsa-ap-root .ap-settings-row,
+  body.wsa-zb-active #wsa-ap-root .ap-form-row,
+  body.wsa-zb-active #wsa-ap-root .ap-form-row--3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-stat {
+    padding: 14px 10px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-stat__val {
+    font-size: clamp(20px, 7vw, 28px) !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-table-wrap {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  #wsa-zb-theme-switcher {
+    right: 12px !important;
+    bottom: 12px !important;
+    transform: scale(.88) !important;
+    transform-origin: right bottom !important;
+  }
+}
+
+@media (max-width: 680px) {
+  body.wsa-zb-active #wsa-ap-root .ap-qm-grid,
+  body.wsa-zb-active #wsa-ap-root .ap-filter-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-card-head,
+  body.wsa-zb-active #wsa-ap-root .ap-card-body,
+  body.wsa-zb-active #wsa-ap-root .ap-card-title {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-content {
+    padding: 10px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-qm-btns {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* WSA 5.6.4 Final All-Device Mobile Layout Patch
+   Frontend-only: sidebar overlay, Quick Mark single-card mobile view, Face Attendance mobile layout. */
+body.wsa-zb-active #wsa-ap-root,
+body.wsa-zb-active #wsa-ap-root * {
+  box-sizing: border-box !important;
+}
+
+body.wsa-zb-active #wsa-ap-root {
+  overscroll-behavior: contain !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .wsa-ap-main,
+body.wsa-zb-active #wsa-ap-root .wsa-ap-content,
+body.wsa-zb-active #wsa-ap-root .ap-page,
+body.wsa-zb-active #wsa-ap-root .ap-card,
+body.wsa-zb-active #wsa-ap-root .ap-qm-card,
+body.wsa-zb-active #wsa-ap-root .ap-face-card {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Quick Mark desktop/tablet stability */
+body.wsa-zb-active #wsa-ap-root .ap-qm-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)) !important;
+  gap: 14px !important;
+  width: 100% !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-card {
+  width: 100% !important;
+  padding: 14px !important;
+  border-radius: 16px !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-top {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-info strong,
+body.wsa-zb-active #wsa-ap-root .ap-qm-info span {
+  display: block !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-btns {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin-top: 12px !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-btns .ap-btn {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 42px !important;
+  padding: 10px 8px !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-qm-btns .ap-w-full,
+body.wsa-zb-active #wsa-ap-root .ap-qm-btns .ap-btn:only-child {
+  grid-column: 1 / -1 !important;
+}
+
+/* Face Attendance / Face Registration base responsive safety */
+body.wsa-zb-active #wsa-ap-root .ap-face-page {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-stats,
+body.wsa-zb-active #wsa-ap-root .ap-stat-grid.ap-face-stats {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)) !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  align-items: start !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-card {
+  width: 100% !important;
+  overflow: hidden !important;
+  padding: 16px !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-camera {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 260px !important;
+  max-height: none !important;
+  aspect-ratio: 16 / 10 !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-camera video,
+body.wsa-zb-active #wsa-ap-root .ap-face-camera canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-actions {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-actions .ap-btn {
+  width: 100% !important;
+  min-height: 44px !important;
+  white-space: normal !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-card .ap-table {
+  width: 100% !important;
+  min-width: 0 !important;
+  table-layout: fixed !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-card .ap-table td {
+  word-break: break-word !important;
+  white-space: normal !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-user {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-user > div:last-child {
+  min-width: 0 !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-staff-preview {
+  width: 100% !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+}
+
+body.wsa-zb-active #wsa-ap-root .ap-face-steps {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+}
+
+@media (max-width: 900px) {
+  body.wsa-zb-active,
+  body.wsa-zb-active.wsa-ap-sidebar-open {
+    overflow: hidden !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root {
+    position: fixed !important;
+    inset: var(--zb-admin-offset, 0px) 0 0 0 !important;
+    width: 100vw !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-layout {
+    display: flex !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    overflow: hidden !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-main {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    margin-left: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-content {
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 14px !important;
+  }
+
+  /* Proper mobile sidebar: hidden by default, comes over dashboard only after toggle. */
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-sidebar,
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-sidebar.hidden {
+    position: fixed !important;
+    top: var(--zb-admin-offset, 0px) !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: min(86vw, 320px) !important;
+    min-width: 0 !important;
+    max-width: min(86vw, 320px) !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    max-height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    transform: translate3d(-110%, 0, 0) !important;
+    transition: transform .28s cubic-bezier(.22, .75, .26, 1) !important;
+    z-index: 100040 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    background: var(--zb-bg2, #0f111a) !important;
+    border-right: 1px solid var(--zb-border, rgba(255,255,255,.10)) !important;
+    box-shadow: 24px 0 80px rgba(0,0,0,.50) !important;
+    will-change: transform !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-sidebar.open {
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-overlay {
+    position: fixed !important;
+    top: var(--zb-admin-offset, 0px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: calc(100dvh - var(--zb-admin-offset, 0px)) !important;
+    background: rgba(2,6,23,.66) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    z-index: 100030 !important;
+    display: none !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-overlay.visible {
+    display: block !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-menu-toggle {
+    display: inline-flex !important;
+    flex: 0 0 42px !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--zb-border, rgba(255,255,255,.10)) !important;
+    background: rgba(255,255,255,.06) !important;
+    color: var(--zb-text, #f0f2ff) !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-topbar {
+    width: 100% !important;
+    min-height: 58px !important;
+    padding: 0 12px !important;
+    gap: 10px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-topbar h1 {
+    min-width: 0 !important;
+    max-width: 52vw !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 15px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-topbar-right {
+    min-width: 0 !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-topbar-clock {
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-page-head,
+  body.wsa-zb-active #wsa-ap-root .ap-page-head-right {
+    width: 100% !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-page-head-right {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-page-head-right .ap-btn,
+  body.wsa-zb-active #wsa-ap-root #qmRefresh,
+  body.wsa-zb-active #wsa-ap-root #faceRefresh,
+  body.wsa-zb-active #wsa-ap-root #regReset {
+    width: 100% !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-filter-row,
+  body.wsa-zb-active #wsa-ap-root .ap-form-row,
+  body.wsa-zb-active #wsa-ap-root .ap-form-row--3,
+  body.wsa-zb-active #wsa-ap-root .ap-grid-2,
+  body.wsa-zb-active #wsa-ap-root .ap-grid-3,
+  body.wsa-zb-active #wsa-ap-root .ap-face-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-filter-row {
+    display: grid !important;
+    width: 100% !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-field,
+  body.wsa-zb-active #wsa-ap-root .ap-field input,
+  body.wsa-zb-active #wsa-ap-root .ap-field select,
+  body.wsa-zb-active #wsa-ap-root .ap-field textarea {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Quick Mark must be one-by-one on mobile. */
+  body.wsa-zb-active #wsa-ap-root .ap-qm-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-qm-card {
+    padding: 14px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-qm-btns {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-qm-top {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    align-items: flex-start !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-qm-top .ap-badge {
+    grid-column: 1 / -1 !important;
+    justify-self: start !important;
+    margin-left: 0 !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-flex {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  /* Face Attendance clean mobile stack. */
+  body.wsa-zb-active #wsa-ap-root .ap-face-stats,
+  body.wsa-zb-active #wsa-ap-root .ap-stat-grid.ap-face-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-face-card {
+    padding: 14px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-card-title-row {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    align-items: start !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-face-camera {
+    min-height: clamp(230px, 58vw, 360px) !important;
+    aspect-ratio: 4 / 3 !important;
+    border-radius: 14px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-face-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-face-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-face-user {
+    align-items: flex-start !important;
+    padding: 14px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-table-wrap,
+  body.wsa-zb-active #wsa-ap-root .ap-card .ap-table {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+  }
+}
+
+@media (max-width: 520px) {
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-content {
+    padding: 10px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-stats,
+  body.wsa-zb-active #wsa-ap-root .ap-face-stats,
+  body.wsa-zb-active #wsa-ap-root .ap-stat-grid.ap-face-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-card,
+  body.wsa-zb-active #wsa-ap-root .ap-qm-card,
+  body.wsa-zb-active #wsa-ap-root .ap-face-card,
+  body.wsa-zb-active #wsa-ap-root .ap-filter-bar {
+    border-radius: 14px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-card-head,
+  body.wsa-zb-active #wsa-ap-root .ap-card-body,
+  body.wsa-zb-active #wsa-ap-root .ap-card-title {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-face-camera {
+    min-height: 250px !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-face-user {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-face-steps {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .ap-topbar-clock {
+    display: none !important;
+  }
+
+  body.wsa-zb-active #wsa-ap-root .wsa-ap-topbar h1 {
+    max-width: calc(100vw - 88px) !important;
+  }
+}
+
+
+/* WSA 5.6.5 Mobile Sidebar Toggle Final Fix
+   One source of truth: #apSidebar.open + #apOverlay.visible. */
+@media (max-width: 900px) {
+  body .wsa-ap-root .wsa-ap-layout {
+    display: flex !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 100dvh !important;
+    overflow: hidden !important;
+  }
+  body .wsa-ap-root .wsa-ap-main {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    overflow: hidden !important;
+  }
+  body .wsa-ap-root .wsa-ap-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  body .wsa-ap-root #apSidebar.wsa-ap-sidebar,
+  body .wsa-ap-root .wsa-ap-sidebar {
+    display: flex !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: min(86vw, 320px) !important;
+    min-width: 0 !important;
+    max-width: min(86vw, 320px) !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    transform: translate3d(-112%, 0, 0) !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: transform .28s cubic-bezier(.22,.75,.26,1), visibility 0s linear .28s !important;
+    z-index: 100040 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    background: var(--ap-bg2, var(--zb-bg2, #0f111a)) !important;
+    box-shadow: 24px 0 80px rgba(0,0,0,.50) !important;
+  }
+  body .wsa-ap-root #apSidebar.wsa-ap-sidebar.open,
+  body .wsa-ap-root .wsa-ap-sidebar.open {
+    transform: translate3d(0, 0, 0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transition: transform .28s cubic-bezier(.22,.75,.26,1), visibility 0s linear 0s !important;
+  }
+  body .wsa-ap-root #apOverlay.wsa-ap-overlay,
+  body .wsa-ap-root .wsa-ap-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    z-index: 100030 !important;
+    display: block !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    background: rgba(2,6,23,.66) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    transition: opacity .2s ease, visibility 0s linear .2s !important;
+  }
+  body .wsa-ap-root #apOverlay.wsa-ap-overlay.visible,
+  body .wsa-ap-root .wsa-ap-overlay.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transition: opacity .2s ease, visibility 0s linear 0s !important;
+  }
+  body .wsa-ap-root #apMenuToggle.ap-menu-toggle,
+  body .wsa-ap-root .ap-menu-toggle {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    flex: 0 0 42px !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 100 !important;
+  }
+  body.admin-bar .wsa-ap-root #apSidebar.wsa-ap-sidebar,
+  body.admin-bar .wsa-ap-root .wsa-ap-sidebar {
+    top: 46px !important;
+    height: calc(100dvh - 46px) !important;
+    max-height: calc(100dvh - 46px) !important;
+  }
+  body.admin-bar .wsa-ap-root #apOverlay.wsa-ap-overlay,
+  body.admin-bar .wsa-ap-root .wsa-ap-overlay {
+    top: 46px !important;
+    height: calc(100dvh - 46px) !important;
+  }
+}
+@media (min-width: 901px) {
+  body .wsa-ap-root #apSidebar.wsa-ap-sidebar,
+  body .wsa-ap-root .wsa-ap-sidebar {
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  body .wsa-ap-root #apOverlay.wsa-ap-overlay,
+  body .wsa-ap-root .wsa-ap-overlay {
+    display: none !important;
+  }
+}

@@ -1,0 +1,15 @@
+Dashboard Layout Fix
+
+Fixed:
+1. Dashboard full-width layout.
+2. Removed white gaps around frontend dashboard.
+3. Sidebar fixed width and proper height.
+4. Right content area fixed and aligned.
+5. Table width and spacing fixed.
+6. Face Attendance and Face Registration sidebar injection added.
+7. Quick Mark checkout button visibility restored.
+8. Elegant rectangular buttons applied globally.
+
+Important:
+Clear browser cache and Hostinger cache after installing.
+If using Elementor page container, set page layout to Full Width / Canvas.

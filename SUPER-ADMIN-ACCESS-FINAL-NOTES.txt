@@ -1,0 +1,18 @@
+Super Admin Access Final Build
+
+Added:
+- Super Admin > Role Access module in frontend portal.
+- Super Admin can choose which modules normal Admin can see.
+- Frontend portal uses login credentials and session role to show/hide modules.
+- Backend WP admin plugin menu visibility can be controlled for mapped Admin accounts.
+- Super Admin always keeps full access.
+- Salary Slip dark-mode text color fixed with print-friendly white slip layout.
+
+How to use:
+1. Login to /wsa-admin/ using Super Admin credentials.
+2. Open Admin Accounts to create Admin users.
+3. Open Role Access to select modules visible for Admin role.
+4. Admin logs in with their own credentials and sees only allowed modules.
+
+Important:
+Clear Hostinger cache and hard refresh with Ctrl + F5 after upload.

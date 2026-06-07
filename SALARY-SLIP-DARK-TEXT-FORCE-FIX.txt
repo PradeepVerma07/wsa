@@ -1,0 +1,13 @@
+Salary Slip Dark Mode Text Force Fix
+
+Fixed:
+- Salary slip text is forced black on white slip paper even when dashboard is in dark mode.
+- Net Salary and total rows stay green.
+- Labels are muted gray.
+- Rule note is brown/orange on light background.
+- CSS and JS both enforce the fix so older global dark-mode styles cannot override it.
+
+After upload:
+1. Clear Hostinger cache.
+2. Hard refresh /wsa-admin/ with Ctrl + F5.
+3. Generate Salary Slip again.

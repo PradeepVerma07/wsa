@@ -1,0 +1,12 @@
+Salary Slip Actual Fix
+
+Fixed real frontend Salary Slip JS error:
+- pageSalarySlip() was using money() and monthLabel() helpers that were only scoped inside pageSalary().
+- Added those helpers directly inside pageSalarySlip().
+- Added safe empty/error output if salary records are not available.
+- Added small salary slip text color readability patch.
+
+Install:
+1. Upload this ZIP.
+2. Clear Hostinger cache.
+3. Hard refresh /wsa-admin/ with Ctrl + F5.

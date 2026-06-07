@@ -1,0 +1,11 @@
+Frontend Attendance Edit/Delete Final Fix (v5.7.2)
+
+Changes:
+- Replaced fragile AJAX-only frontend Attendance actions with native admin-post.php forms.
+- Edit opens a native inline form inside the Attendance row and submits like WP admin.
+- Delete submits directly to admin-post.php with portal token.
+- REST/admin-ajax fallback routes remain available.
+- Redirect returns to Attendance page with success/error toast.
+- Added cache-busting plugin version 5.7.2.
+
+Install this ZIP, deactivate/delete old version if WordPress keeps it cached, activate, then clear LiteSpeed/browser cache.

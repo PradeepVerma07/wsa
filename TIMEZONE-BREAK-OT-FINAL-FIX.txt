@@ -1,0 +1,20 @@
+TIMEZONE + BREAK WINDOW + OT CALCULATION FINAL FIX
+
+Fixed:
+1. Attendance timezone now syncs with Settings > Timezone and updates WordPress timezone_string.
+2. Manual attendance no longer deducts a blind fixed 30-minute break.
+3. Break is now deducted only when IN→OUT crosses the configured break window.
+   Default: 13:00 to 13:30.
+   Example:
+   - 09:00 to 12:00 = no break deduction
+   - 09:00 to 19:00 = 30 min break deduction, 8h work + 1h30m OT
+   - 13:15 to 18:00 = 15 min break deduction
+4. Previous special case remains unchanged:
+   - 09:00 to 21:00 regular day = 8h work + 4h OT, no break deduction.
+5. Salary report, attendance list, export CSV, frontend/admin REST attendance list now use the same break-window logic.
+6. Settings now include Break Start Time and Break End Time.
+
+Recommended setting for your case:
+Timezone: Asia/Kolkata
+Break Start Time: 13:00
+Break End Time: 13:30

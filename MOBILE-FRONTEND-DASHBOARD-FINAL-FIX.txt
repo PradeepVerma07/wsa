@@ -1,0 +1,7 @@
+Mobile Frontend Dashboard Final Fix
+
+- Frontend admin dashboard sidebar now opens as a professional off-canvas overlay on mobile/tablet when clicking the toggle button.
+- Existing desktop sidebar layout remains unchanged.
+- Quick Mark cards, filters, staff status badge, and action buttons are aligned properly on mobile.
+- Tables and dashboard content now scroll correctly inside the dashboard area.
+- Attendance, salary, QR, face, and REST logic were not changed. This is a UI/responsive patch only.

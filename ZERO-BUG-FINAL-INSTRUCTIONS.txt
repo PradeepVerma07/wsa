@@ -1,0 +1,20 @@
+ZERO BUG FINAL BUILD
+
+Before installing:
+1. Deactivate and delete ALL separate dashboard fix plugins:
+   - Emergency Fix
+   - V2 / V3 / V4 / V5
+   - Exact Frontend Dashboard Fix
+2. Upload this final ZIP as your main plugin.
+3. Activate only this plugin.
+4. Clear Hostinger cache.
+5. Open /wsa-admin/ and press Ctrl + F5.
+
+Included:
+- Removed old broken repair includes.
+- Removes duplicate Face Attendance and Face Registration links.
+- Keeps only the real dashboard Face menu item.
+- Fixes frontend dashboard scrolling.
+- Fixes responsive layout.
+- Adds working Dark / Light mode.
+- Does not affect WP Admin.

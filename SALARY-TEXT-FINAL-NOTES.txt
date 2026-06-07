@@ -1,0 +1,15 @@
+Salary Slip + Text Color Final Patch
+
+Changed:
+- Everything else remains unchanged.
+- Fixes Salary Slip frontend stuck loading by showing a safe fallback panel.
+- Improves all frontend dashboard text colors.
+- Light mode uses clean WordPress-admin-style colors.
+- Dark mode remains elegant and readable.
+- Print button added for salary slip fallback.
+- Does not affect wp-admin.
+
+Install:
+1. Upload this ZIP.
+2. Clear Hostinger cache.
+3. Press Ctrl + F5.

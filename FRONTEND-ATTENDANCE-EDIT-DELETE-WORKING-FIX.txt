@@ -1,0 +1,15 @@
+Frontend Attendance Edit/Delete Working Fix — v5.7.0
+
+Fixed:
+1. Frontend Attendance Logs Edit button now opens reliably using capture-phase click handling.
+2. Frontend Delete button now deletes records using the same database path as WP admin.
+3. Added unified admin-ajax action: wsa_ap_attendance_action.
+4. Added fallback support for portal token, WP admin login, form POST, JSON body, REST POST, PUT and DELETE.
+5. Edit accepts id/record_id/attendance_id, date/att_date, login_time/check_in/in_time and logout_time/check_out/out_time aliases.
+6. Delete also removes connected break rows before deleting the attendance row.
+7. Recalculates total hours, OT, status and early-exit after frontend edits.
+
+Install:
+- Upload/replace this plugin ZIP in WordPress.
+- Clear cache/LiteSpeed/browser cache.
+- Logout/login again to the frontend admin portal once so the new portal token is fresh.

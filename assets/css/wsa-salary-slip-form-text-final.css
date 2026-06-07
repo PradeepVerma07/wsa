@@ -1,0 +1,126 @@
+
+/* WSA Salary Slip Form Text Final Fix
+   Fixes the white salary slip form card text in dark dashboard mode.
+   Loaded last and scoped only to Salary Slip frontend classes.
+*/
+
+/* Salary Slip form white card */
+html body #wsa-ap-root .wsa-front-slip-form,
+html body #wsa-ap-root .wsa-front-slip-empty,
+html body #wsa-ap-root #ssOutput .wsa-front-slip-empty {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+/* All text inside the salary form and empty panel */
+html body #wsa-ap-root .wsa-front-slip-form *,
+html body #wsa-ap-root .wsa-front-slip-empty *,
+html body #wsa-ap-root #ssOutput .wsa-front-slip-empty * {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  text-shadow: none !important;
+}
+
+/* Labels must be clearly visible */
+html body #wsa-ap-root .wsa-front-slip-form label,
+html body #wsa-ap-root .wsa-front-slip-form label *,
+html body #wsa-ap-root .wsa-front-slip-form strong,
+html body #wsa-ap-root .wsa-front-slip-form b {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  font-weight: 800 !important;
+}
+
+/* Inputs and select controls */
+html body #wsa-ap-root .wsa-front-slip-form input,
+html body #wsa-ap-root .wsa-front-slip-form select,
+html body #wsa-ap-root .wsa-front-slip-form textarea,
+html body #wsa-ap-root #ssMonth,
+html body #wsa-ap-root #ssYear,
+html body #wsa-ap-root #ssStaff {
+  background: #f8fafc !important;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  border: 1px solid #cbd5e1 !important;
+  caret-color: #111827 !important;
+}
+
+/* Select dropdown options */
+html body #wsa-ap-root .wsa-front-slip-form option,
+html body #wsa-ap-root #ssStaff option {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* Placeholder text */
+html body #wsa-ap-root .wsa-front-slip-form input::placeholder,
+html body #wsa-ap-root .wsa-front-slip-form textarea::placeholder {
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+}
+
+/* Primary orange button text should stay white */
+html body #wsa-ap-root .wsa-front-slip-form .ap-btn--primary,
+html body #wsa-ap-root .wsa-front-slip-form #ssOne,
+html body #wsa-ap-root .wsa-front-slip-form button.ap-btn--primary {
+  background: #e95522 !important;
+  border-color: #e95522 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Ghost / Generate All button on white card */
+html body #wsa-ap-root .wsa-front-slip-form .ap-btn--ghost,
+html body #wsa-ap-root .wsa-front-slip-form #ssAll {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+/* Print button must stay high contrast in light mode. */
+html body #wsa-ap-root .wsa-front-slip-form #ssPrint {
+  background: #111827 !important;
+  border: 1px solid #111827 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Disabled button should still be readable */
+html body #wsa-ap-root .wsa-front-slip-form button:disabled,
+html body #wsa-ap-root .wsa-front-slip-form .ap-btn:disabled {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+  opacity: 1 !important;
+}
+
+/* Generated slip remains clean white paper */
+html body #wsa-ap-root .wsa-slip,
+html body #wsa-ap-root .wsa-slip * {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  text-shadow: none !important;
+}
+
+html body #wsa-ap-root .wsa-slip {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+html body #wsa-ap-root .wsa-slip p,
+html body #wsa-ap-root .wsa-slip span,
+html body #wsa-ap-root .wsa-slip small,
+html body #wsa-ap-root .wsa-slip td:first-child {
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+}
+
+html body #wsa-ap-root .wsa-slip .wsa-slip-net strong,
+html body #wsa-ap-root .wsa-slip .total td {
+  color: #16a34a !important;
+  -webkit-text-fill-color: #16a34a !important;
+}

@@ -1,0 +1,14 @@
+Salary Slip Form Text Final Fix
+
+Fixed:
+- White Salary Slip form card labels/text in dark mode.
+- Month, Year, Staff select text.
+- Generate All / disabled button text.
+- Empty salary slip output panel text.
+- Generated slip text remains black on white paper.
+
+After upload:
+1. Clear Hostinger cache.
+2. Open /wsa-admin/.
+3. Press Ctrl + F5.
+4. Open Salary Slip again.

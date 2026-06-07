@@ -1,0 +1,16 @@
+WSA 5.6.8 — Frontend Attendance Edit/Delete Real Fix
+
+Fixed:
+- Frontend Attendance Edit button now uses one global delegated click handler.
+- Frontend Attendance Delete button now uses one global delegated click handler.
+- Action buttons now show clear text: Edit / Delete.
+- Added admin-ajax fallback endpoints for update/delete because some hosting/security layers block REST PUT/DELETE/custom headers.
+- REST permission now also allows logged-in WordPress administrators.
+- Admin-ajax update/delete validates portal token or logged-in WP administrator.
+- Delete removes row instantly after success and reloads list.
+- Edit modal save uses admin-ajax primary path and REST fallback.
+- Plugin version bumped to 5.6.8 for cache busting.
+
+Important:
+- Clear LiteSpeed/cache/browser cache after upload.
+- If using old plugin folder, delete old plugin first then upload this ZIP.
